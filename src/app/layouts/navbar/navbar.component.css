@@ -1,0 +1,109 @@
+
+.bg-lime-50 {
+  position: sticky;
+  top: 0; /* Adjust the offset as needed */
+  z-index: 50; /* Ensure it's above other content */
+  animation: sticky-slide-down 0.4s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+@keyframes sticky-slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.bg-lime-50:hover {
+  background-color: #15263a; /* Slightly darker lime shade on hover */
+}
+
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1rem;
+  background-color: #fff; /* Initial background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+#navbar.scrolled {
+  padding: 0; /* No padding when scrolled */
+  background-color: #192c41; /* Slightly darker shade when scrolled */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.navbar-menu {
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-menu .navbar-backdrop {
+  z-index: 49;
+}
+
+.navbar-menu nav {
+  z-index: 50;
+}
+
+.navbar-menu.open {
+  display: block;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.active-link {
+  color: #ffffff; /* Yellow-200 */
+  transform: scale(1.05);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+@keyframes underlineAnimation {
+  0% {
+    width: 0%;
+    left: 50%;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0%;
+    left: 50%;
+  }
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #ffff;
+  animation: underlineAnimation 2s infinite ease-in-out;
+}
