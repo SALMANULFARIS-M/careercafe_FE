@@ -1,8 +1,8 @@
-<div class="bg-lime-50" [class.scrolled]="isScrolled" id="navbar">
+<div class="bg-gray-100" [class.scrolled]="isScrolled" id="navbar">
   <nav
     class="relative flex justify-between items-center bg-navy transition-all duration-300 ease-in-out"
   >
-    <a class="font-bold leading-none p-2" routerLink="/" >
+    <a class="font-bold leading-none p-2" routerLink="/">
       <img
         src="careercafe_logo-transparent.png"
         class="w-24 rounded"
@@ -87,6 +87,14 @@
         </a>
       </li>
     </ul>
+    <!-- Be a Franchise Button -->
+    <a
+      routerLink="/franchise"
+      routerLinkActive="active-link animated-underline"
+      class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md transition-all duration-300 ease-in-out hover:border-yellow-400 hover:border-2"
+    >
+      Become a Franchise
+    </a>
   </nav>
 </div>
 
@@ -128,9 +136,8 @@
           <a
             class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
             routerLink="/"
-            routerLinkActive="active-link animated-underline"
+            routerLinkActive="active-link-mobile animated-underline-mobile"
             [routerLinkActiveOptions]="{ exact: true }"
-
             >Home</a
           >
         </li>
@@ -138,7 +145,7 @@
           <a
             class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
             routerLink="/about"
-          routerLinkActive="active-link animated-underline"
+            routerLinkActive="active-link-mobile animated-underline-mobile"
             >About Us</a
           >
         </li>
@@ -146,9 +153,16 @@
           <a
             class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
             routerLink="/contact"
-  routerLinkActive="active-link animated-underline"
-
+            routerLinkActive="active-link-mobile animated-underline-mobile"
             >Contact</a
+          >
+        </li>
+        <li class="mb-1">
+          <a
+            class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
+            routerLink="/franchise"
+            routerLinkActive="active-link-mobile animated-underline-mobile"
+            >Be a Franchise</a
           >
         </li>
       </ul>

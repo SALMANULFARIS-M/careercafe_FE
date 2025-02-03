@@ -25,7 +25,7 @@
   top: 0;
   z-index: 50;
   padding: 1rem;
-  background-color: #fff; /* Initial background color */
+  background-color: #F3F4F6; /* Initial background color */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
 }
@@ -60,7 +60,7 @@
 }
 
 .active-link {
-  color: #ffffff; /* Yellow-200 */
+  color: #F3F4F6; /* Yellow-200 */
   transform: scale(1.05);
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -73,7 +73,7 @@
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #F3F4F6;
   transform: scaleX(1);
   transition: transform 0.3s ease-in-out;
 }
@@ -106,4 +106,32 @@ a:hover::after {
   height: 2px;
   background-color: #ffff;
   animation: underlineAnimation 2s infinite ease-in-out;
+}
+.animated-underline-mobile::after{
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #000000;
+  animation: underlineAnimation 2s infinite ease-in-out;
+}
+.active-link-mobile {
+  color:#FACC15; /* Yellow-200 */
+  transform: scale(1.05);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.active-link-mobile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #89898a;
+  transform: scaleX(1);
+  transition: transform 0.3s ease-in-out;
 }

@@ -1,94 +1,421 @@
-
-
-<body class="bg-gray-50 text-gray-800">
-
+<body class="bg-gray-100 text-gray-800"  >
   <!-- Hero Section -->
-  <section class="bg-gray-200 py-20 text-center">
-    <div class="container mx-auto">
-      <h2 class="text-4xl font-bold mb-4">way for your career</h2>
-      <p class="text-lg mb-6">A Web Developer specializing in React, TypeScript, and modern web technologies.</p>
+  <section class="bg-gray-100 py-20 text-center relative mx-1 animated-box"   >
+    <div class="absolute inset-0">
+      <img
+        src="cc1.png"
+        alt="Background Image"
+        class="w-full h-full object-cover opacity-70 filter blur-sm"
+      />
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+    </div>
+    <div class="container relative mx-auto px-4 my-24 animated-box" id="first-section" @fadeInUp>
+      <h2 class="text-4xl font-extrabold text-white mb-6">
+        <span>Your One-Stop Solution for</span><br />
+        <span class="text-yellow-400"
+          >Education, Career, and Immigration Advice</span
+        >
+      </h2>
+      <br />
+      <p class="text-xl mb-6 text-lime-50 font-semibold leading-relaxed">
+        Discover endless opportunities across 120 countries with expert
+        guidance.
+      </p>
+      <div class="mt-8">
+        <br /><br />
+        <button
+          (click)="scrollToForm()"
+          class="button-hover py-3 px-8 text-white rounded-full font-bold text-lg bg-navy shadow-md transition duration-300 hover:bg-yellow-400 hover:text-navy hover:font-extrabold"
+        >
+          Book a Consultation
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <section class="bg-gray-100 py-20 text-center" >
+    <div class="container mx-auto px-4" >
+      <h2 class="text-4xl font-extrabold text-navy mb-6">
+        Welcome to <span class="text-yellow-400 animated-box" [@scaleIn]>Career Café!</span>
+      </h2>
+      <p class="text-lg text-gray-700 mb-8 animated-box" [@scaleIn]>
+        Career Café is a unique platform designed to help individuals explore
+        and achieve their dreams in education, careers, jobs, and permanent
+        residency (PR). We combine the relaxed atmosphere of a café with expert
+        consultancy services, enabling you to make informed decisions in a
+        comfortable environment.
+      </p>
+
+      <h3 class="text-3xl font-bold text-navy mb-4">What We Offer</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box" [@flipIn]>
+        <div
+          *ngFor="let service of services"
+          class=" service-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+        >
+          <h4 class="text-xl font-semibold text-yellow-400 mb-2">
+            {{ service.title }}
+          </h4>
+          <p class="text-gray-600">{{ service.description }}</p>
+        </div>
+      </div>
+
+      <h3 class="text-3xl font-bold text-navy mt-12 mb-6">Why Choose Us?</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box" [@flipIn]>
+        <div
+          *ngFor="let benefit of benefits"
+          class="animate-fade-in animate-slide-up benefit-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+        >
+          <h4 class="text-xl font-semibold text-yellow-400 mb-2">
+            {{ benefit.title }}
+          </h4>
+          <p class="text-gray-600">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail Section -->
   <section id="about" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold mb-6">About Me</h3>
-      <p class="text-lg">I’m SALMANUL FARIS, a passionate web developer who believes in creating user-friendly and visually appealing digital experiences. I value clean code, modern design, and solving challenging problems through technology.</p>
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center animated-box" [@bounceIn]>
+      <!-- Image Container -->
+      <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+        <div *ngFor="let img of images" class="relative w-full h-full animate-fade-in animate-slide-up" >
+          <img
+            [src]="img"
+            alt="Career Guidance"
+            class="img-style rounded-xl shadow-lg w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-navy opacity-30 rounded-xl"></div>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="lg:w-1/2 mt-10 lg:mt-0 text-center lg:text-left">
+        <!-- Main Heading -->
+        <h3
+          class="text-[100px] font-normal text-[#19293b] leading-none font-[Brush Script MT] animated-box" [@scaleIn]
+        >
+          Find Your Career Path
+        </h3>
+
+        <!-- Subheading -->
+        <h4
+          class="text-[47px] font-bold text-[#ffc20e] tracking-[9.4px] font-[Copperplate] mt-4 animated-box" [@scaleIn]
+        >
+          Career Advice with a Cup of Tea
+        </h4>
+
+        <div class="my-4"><i class="fas fa-asterisk text-yellow-400"></i></div>
+
+        <!-- Paragraph -->
+        <p class="text-lg text-gray-700 animated-box" [@scaleIn]>
+          Enjoy a warm cup of tea while exploring a career roadmap tailored just
+          for you. Get expert guidance, insights, and motivation to achieve your
+          professional goals in a relaxed and inspiring environment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="bg-gray-100 py-20 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-extrabold text-navy mb-12 animated-box " [@scaleIn]>How It Works</h2>
+
+      <!-- Step 1 - Image Layout -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+      >
+        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+          <div class="flex items-center justify-center mb-4">
+            <div class="text-4xl text-yellow-400 font-bold">01</div>
+          </div>
+          <h3 class="text-2xl font-semibold text-navy mb-2">
+            Book an Appointment
+          </h3>
+          <p class="text-lg text-gray-600 ">
+            Schedule a session with our expert consultants through our website
+            or at one of our café locations.
+          </p>
+        </div>
+        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+          <img
+            src="https://www.shutterstock.com/image-photo/book-your-appointment-text-on-600nw-2400843205.jpg"
+            alt="Book Appointment"
+            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+          />
+        </div>
+      </div>
+
+      <!-- Step 2 - Icon Layout -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+      >
+        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+          <div class="flex items-center justify-center mb-4">
+            <div class="text-4xl text-yellow-400 font-bold">02</div>
+          </div>
+          <h3 class="text-2xl font-semibold text-navy mb-2">
+            Discuss Your Goals
+          </h3>
+          <p class="text-lg text-gray-600">
+            Sit down with our experts to discuss your education, career, or
+            immigration aspirations.
+          </p>
+        </div>
+        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+          <img
+            src="https://st2.depositphotos.com/1006009/10540/i/450/depositphotos_105405522-stock-photo-set-goals-that-matter-on.jpg"
+            alt="Book Appointment"
+            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+          />
+        </div>
+      </div>
+
+      <!-- Step 3 - Image & Icon Mix -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+      >
+        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+          <div class="flex items-center justify-center mb-4">
+            <div class="text-4xl text-yellow-400 font-bold">03</div>
+          </div>
+          <h3 class="text-2xl font-semibold text-navy mb-2">
+            Explore Opportunities
+          </h3>
+          <p class="text-lg text-gray-600">
+            Receive a personalized plan with options suited to your needs.
+          </p>
+        </div>
+        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+          <img
+            src="https://st2.depositphotos.com/1092019/8662/i/450/depositphotos_86628780-stock-photo-handwritten-explore-your-options-on.jpg"
+            alt="Book Appointment"
+            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+          />
+        </div>
+      </div>
+
+      <!-- Step 4 - Image & Icon Mix -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+      >
+        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+          <div class="flex items-center justify-center mb-4">
+            <div class="text-4xl text-yellow-400 font-bold">04</div>
+          </div>
+          <h3 class="text-2xl font-semibold text-navy mb-2">Take Action</h3>
+          <p class="text-lg text-gray-600">
+            With our guidance, embark on your journey to success.
+          </p>
+        </div>
+        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+          <img
+            src="https://st3.depositphotos.com/1006009/18531/i/450/depositphotos_185310142-stock-photo-take-action-motivation-concept-on.jpg"
+            alt="Book Appointment"
+            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+          />
+        </div>
+      </div>
+
+      <!-- Network Opportunities - Emphasis Section -->
+      <div class="mt-12 bg-yellow-400 text-navy p-8 rounded-lg shadow-lg animated-box" [@scaleIn]>
+        <h3 class="text-2xl font-bold mb-4">Join a Network of Opportunities</h3>
+        <p class="text-lg">
+          Our collaborative network of consultancies ensures that you have
+          access to the best resources, institutions, and job markets worldwide.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- EVENTS Section -->
-  <section id="skills" class="py-20 bg-gray-100">
+  <section id="events" class="py-20 bg-white">
     <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold mb-6">Skills</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="text-center bg-white p-6 rounded shadow-md">
-          <h4 class="font-bold">Web Development</h4>
-        </div>
-        <div class="text-center bg-white p-6 rounded shadow-md">
-          <h4 class="font-bold">React</h4>
-        </div>
-        <div class="text-center bg-white p-6 rounded shadow-md">
-          <h4 class="font-bold">TypeScript</h4>
-        </div>
-        <div class="text-center bg-white p-6 rounded shadow-md">
-          <h4 class="font-bold">CSS & Tailwind</h4>
+      <h3 class="text-3xl font-bold mb-6 text-center text-navy">EVENTS FOR</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div
+          *ngFor="let event of events"
+          class="relative bg-cover bg-center h-40 rounded shadow-md flex items-center justify-center text-white text-xl font-bold animated-box flip-in-box" [@flipIn]
+          [style.backgroundImage]="'url(' + event.image + ')'"
+        >
+          <div class="bg-black bg-opacity-50 absolute inset-0 rounded"></div>
+          <span class="relative">{{ event.name }}</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold mb-6">Experience</h3>
-      <ul class="space-y-6">
-        <li>
-          <h4 class="font-bold text-lg">Web Developer at XYZ Company</h4>
-          <p>Developed and maintained React-based applications, focusing on performance and user experience.</p>
-        </li>
-        <li>
-          <h4 class="font-bold text-lg">Frontend Developer at ABC Tech</h4>
-          <p>Collaborated on creating TypeScript-powered applications with modern design systems.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <!-- BOOKING -->
+  <section #admissionFormSection id="admission-form" class="py-10 bg-gray-100">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="bg-navy p-8 rounded-lg shadow-lg">
+        <h3 class="text-3xl font-bold text-center text-white mb-6">
+          Book an Appointment
+        </h3>
+        <form
+          (ngSubmit)="onSubmit()"
+          [formGroup]="admissionForm"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 animated-box" [@fadeInUp]
+        >
+          <!-- Left Column -->
+          <div>
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                formControlName="name"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                required
+              />
+              <span
+                *ngIf="
+                  admissionForm.controls['name'].invalid &&
+                  admissionForm.controls['name'].touched
+                "
+                class="text-red-500"
+              >
+                Name is required.
+              </span>
+            </div>
 
-  <!-- Projects Section -->
-  <section id="work" class="py-20 bg-gray-100">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold mb-6">Projects</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded shadow-md">
-          <img src="https://picsum.photos/200/300" alt="Project 1" class="rounded mb-4">
-          <h4 class="font-bold">Project 1</h4>
-          <p>A responsive web application built with React and Tailwind CSS.</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow-md">
-          <img src="https://picsum.photos/200/300" alt="Project 2" class="rounded mb-4">
-          <h4 class="font-bold">Project 2</h4>
-          <p>A feature-rich dashboard powered by TypeScript and modern APIs.</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow-md">
-          <img src="https://picsum.photos/200/300" alt="Project 3" class="rounded mb-4">
-          <h4 class="font-bold">Project 3</h4>
-          <p>An innovative design system created for seamless team collaboration.</p>
-        </div>
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Phone</label
+              >
+              <input
+                type="tel"
+                formControlName="phone"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                required
+                pattern="^[0-9]{10}$"
+              />
+              <span
+                *ngIf="
+                  admissionForm.controls['phone'].invalid &&
+                  admissionForm.controls['phone'].touched
+                "
+                class="text-red-500"
+              >
+                Please enter a valid 10-digit phone number.
+              </span>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                formControlName="email"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                required
+              />
+              <span
+                *ngIf="
+                  admissionForm.controls['email'].invalid &&
+                  admissionForm.controls['email'].touched
+                "
+                class="text-red-500"
+              >
+                Please enter a valid email address.
+              </span>
+            </div>
+            <div class="mb-6">
+              <label class="block text-white font-semibold mb-2"
+                >Select Time</label
+              >
+              <input
+                type="time"
+                formControlName="time"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                required
+                min="10:00"
+                max="17:00"
+              />
+              <span
+                *ngIf="
+                  admissionForm.controls['time'].invalid &&
+                  admissionForm.controls['time'].touched
+                "
+                class="text-red-500"
+              >
+                Please select a time between 10:00 AM to 5:00 PM.
+              </span>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div>
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Select Category</label
+              >
+              <select
+                name="category"
+                formControlName="category"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              >
+                <option value="domestic-admission">Domestic Admission</option>
+                <option value="abroad-admission">Abroad Admission</option>
+                <option value="abroad-job">Abroad Job</option>
+                <option value="domestic-job">Domestic Job</option>
+                <option value="pr">PR</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Select Place</label
+              >
+              <select
+                name="place"
+                formControlName="place"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              >
+                <option value="palakkad">Palakkad</option>
+                <option value="bengaluru">Bengaluru</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Select Date</label
+              >
+              <input
+                type="date"
+                formControlName="date"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                [min]="getMinDate()"
+                required
+              />
+              <span
+                *ngIf="
+                  admissionForm.controls['date'].invalid &&
+                  admissionForm.controls['date'].touched
+                "
+                class="text-red-500"
+              >
+                Please select a valid date.
+              </span>
+            </div>
+          </div>
+
+          <!-- Submit Button (Outside the Grid Columns) -->
+          <div class="col-span-1 lg:col-span-2">
+            <button
+              type="submit"
+              class="w-full py-3 bg-yellow-400 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-300 hover:text-navy transition disabled:opacity-50 disabled:bg-yellow-600"
+              [disabled]="!admissionForm.valid"
+            >
+              <span *ngIf="!admissionForm.valid">Please complete the form</span>
+              <span *ngIf="admissionForm.valid">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold mb-6">Testimonials</h3>
-      <blockquote class="p-6 bg-gray-100 rounded shadow-md">
-        <p>"John Doe is a highly skilled developer who always delivers exceptional results on time." - Client A</p>
-      </blockquote>
-    </div>
-  </section>
-
-
 </body>

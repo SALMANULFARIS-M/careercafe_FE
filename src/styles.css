@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Replace <weight> with a valid number (e.g., 400 for normal) */
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
