@@ -27,7 +27,7 @@
           (click)="scrollToForm()"
           class="button-hover py-3 px-8 text-white rounded-full font-bold text-lg bg-navy shadow-md transition duration-300 hover:bg-yellow-400 hover:text-navy hover:font-extrabold"
         >
-          Book a Consultation
+          Book an Appointment
         </button>
       </div>
     </div>
@@ -97,19 +97,15 @@
         >
           Find Your Career Path
         </h3>
-
         <!-- Subheading -->
         <h4
           class="text-[47px] font-bold text-[#ffc20e] tracking-[9.4px] font-[Copperplate] mt-4 animated-box" [@scaleIn]
         >
-          Career Advice with a Cup of Tea
-        </h4>
-
+        Your Career Compass, Fueled by Coffee        </h4>
         <div class="my-4"><i class="fas fa-asterisk text-yellow-400"></i></div>
-
         <!-- Paragraph -->
         <p class="text-lg text-gray-700 animated-box" [@scaleIn]>
-          Enjoy a warm cup of tea while exploring a career roadmap tailored just
+          Enjoy a warm cup of Cofee while exploring a career roadmap tailored just
           for you. Get expert guidance, insights, and motivation to achieve your
           professional goals in a relaxed and inspiring environment.
         </p>
@@ -324,25 +320,24 @@
               </span>
             </div>
             <div class="mb-6">
-              <label class="block text-white font-semibold mb-2"
-                >Select Time</label
-              >
-              <input
-                type="time"
+              <label class="block text-white font-semibold mb-2">Select Time</label>
+              <select
                 formControlName="time"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
                 required
-                min="10:00"
-                max="17:00"
-              />
+              >
+              <option value="" disabled selected>Select a time</option>
+              <option *ngFor="let time of availableTimes" [value]="time">
+                {{ time | timeFormat }} <!-- Custom pipe to format the time to AM/PM -->
+              </option>
+              </select>
               <span
                 *ngIf="
-                  admissionForm.controls['time'].invalid &&
-                  admissionForm.controls['time'].touched
+                  admissionForm.controls['time'].invalid && admissionForm.controls['time'].touched
                 "
                 class="text-red-500"
               >
-                Please select a time between 10:00 AM to 5:00 PM.
+                Please select a valid time.
               </span>
             </div>
           </div>
@@ -408,12 +403,17 @@
             <button
               type="submit"
               class="w-full py-3 bg-yellow-400 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-300 hover:text-navy transition disabled:opacity-50 disabled:bg-yellow-600"
-              [disabled]="!admissionForm.valid"
+              [disabled]="!admissionForm.valid || isLoading"
             >
-              <span *ngIf="!admissionForm.valid">Please complete the form</span>
-              <span *ngIf="admissionForm.valid">Submit</span>
+              <!-- Spinner while submitting -->
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+
+              <!-- Button Text -->
+              <span *ngIf="!isLoading && !admissionForm.valid">Please complete the form</span>
+              <span *ngIf="!isLoading && admissionForm.valid">Submit</span>
             </button>
           </div>
+
         </form>
       </div>
     </div>

@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { TimeFormatPipe } from '../../pipes/time-format.pipe';
+
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,TimeFormatPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [
@@ -45,7 +48,22 @@ import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractContro
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
-  constructor(private el: ElementRef, private renderer: Renderer2, private http: HttpClient) { }
+  availableTimes: string[] = [];
+  currentTime: Date = new Date();
+  allTimes: string[] = [
+    '10:00', // 10:00 AM
+    '11:00', // 11:00 AM
+    '12:00', // 12:00 PM
+    '14:00', // 02:00 PM
+    '15:00', // 03:00 PM
+    '16:00', // 04:00 PM
+    '17:00'  // 05:00 PM
+  ];
+
+  constructor(private el: ElementRef, private renderer: Renderer2, private http: HttpClient) {
+    this.setAvailableTimes();
+  }
+  isLoading = false; // Control the loading spinner visibility
 
   ngOnInit(): void {
     // Trigger animation for the first section immediately when the page loads
@@ -132,6 +150,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   getMinDate(): string {
     const today = new Date();
+    const hours = today.getHours(); // Get current hour
+
+    // If current time is past 5 PM, set the minimum date to tomorrow
+    if (hours >= 17) {
+      today.setDate(today.getDate() + 1);
+    }
+
     const yyyy = today.getFullYear();
     let mm: string | number = today.getMonth() + 1; // January is 0!
     let dd: string | number = today.getDate();
@@ -139,8 +164,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (mm < 10) mm = '0' + mm;
     if (dd < 10) dd = '0' + dd;
 
-    return `${yyyy}-${mm}-${dd}`;
+    return `${yyyy}-${mm}-${dd}`; // Returns YYYY-MM-DD format
   }
+
 
   // Custom date validator function
   dateValidator(control: AbstractControl): ValidationErrors | null {
@@ -163,6 +189,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     return null; // Valid date
   }
+  setAvailableTimes() {
+    // Filter out past times based on current time
+    this.availableTimes = this.allTimes.filter((time) => {
+      const [hours, minutes] = time.split(':').map(num => parseInt(num, 10));
+      const timeInMinutes = hours * 60 + minutes;
+      const currentTimeInMinutes = this.currentTime.getHours() * 60 + this.currentTime.getMinutes();
+
+      return timeInMinutes > currentTimeInMinutes;
+    });
+  }
 
   // Form initialization with validation
   admissionForm = new FormGroup({
@@ -178,29 +214,43 @@ export class HomeComponent implements OnInit, AfterViewInit {
       Validators.required,
       (control) => this.dateValidator(control)  // Apply custom date validator
     ]),
-    time: new FormControl('', [Validators.required, (control) => this.timeValidator(control)  ])
+    time: new FormControl('', [Validators.required, (control) => this.timeValidator(control)])
   });
 
-  // Handle form submission
+  //Handle form submission
   onSubmit() {
     if (this.admissionForm.valid) {
       const formData = this.admissionForm.value;
-
+      this.isLoading = true; // Show spinner while submitting
       this.http.post('http://localhost:5000/api/appointment', formData)
         .subscribe(
           (response: any) => {
-            console.log('Response from server:', response);
-            alert(response.message);
+            this.isLoading = false;
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: response.message,
+              confirmButtonText: 'Okay'
+            });
           },
           (error) => {
-            console.error('Error:', error);
-            alert('Something went wrong! Please try again.');
+            this.isLoading = false; // Hide the spinner on error
+            // Use SweetAlert2 for attractive error alert
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong! Please try again.',
+              confirmButtonText: 'Try Again'
+            });
           }
         );
-      // Optionally, show a success message
-      alert('Appointment Booked Successfully! We will contact you shortly.');
     } else {
-      alert('Please fill out all required fields correctly.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid Form',
+        text: 'Please fill out all required fields correctly.',
+        confirmButtonText: 'Check it'
+      });
     }
   }
 }
