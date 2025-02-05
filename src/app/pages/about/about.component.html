@@ -1,19 +1,103 @@
-<div class="sm:flex items-center max-w-screen-xl">
-  <div class="sm:w-1/2 p-10">
-      <div class="image object-center text-center">
-          <img src="https://i.imgur.com/WbQnbas.png">
+<div class="max-w-screen-xl mx-auto py-12 px-6 lg:px-16">
+  <!-- Hero Section -->
+  <div class="sm:flex items-center">
+    <div class="sm:w-1/2 p-10 ">
+      <div id="first-elem" class="image object-center text-center animted-box" [@bounceIn]>
+        <img
+          src="https://img-cdn.pixlr.com/image-generator/history/67a3383e729f8b16f0a5f1cb/3d01372d-fb3c-47a0-9ca8-60f4f48d9338/preview.webp"
+          alt="Career Cafe Logo"
+          class="rounded-lg shadow-lg"
+        />
       </div>
+    </div>
+    <div class="sm:w-1/2 p-5 ">
+      <div id="first-elem" class="text animted-box" [@fadeInUp]>
+        <span class="text-gray-500 border-b-2 border-yellow-400 uppercase"
+          >About Us</span
+        >
+        <h2 class="my-4 font-bold text-3xl sm:text-4xl text-navy-700">
+          Welcome to <span class="text-yellow-400">Career Café!</span>
+        </h2>
+        <p class="text-gray-700 text-lg">
+          India’s first career hub designed with the warmth and comfort of a
+          café. We believe that career decisions should be made in a
+          stress-free, inspiring environment, and that’s exactly what we offer.
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="sm:w-1/2 p-5">
-      <div class="text">
-          <span class="text-gray-500 border-b-2 border-indigo-600 uppercase">About us</span>
-          <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">About <span class="text-indigo-600">Our Company</span>
-          </h2>
-          <p class="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi
-              doloremque, fugiat illum magni minus nisi nulla numquam obcaecati placeat quia, repellat tempore
-              voluptatum.
-          </p>
+
+  <!-- Our Mission Section -->
+  <div class="sm:flex flex-row-reverse items-center mt-12">
+    <div class="sm:w-1/2 p-10 animted-box" [@bounceIn]>
+      <div class="image object-center text-center">
+        <img
+          src="https://www.oyova.com/wp-content/uploads/2018/04/The-Whys-and-Hows-of-Company-Mission-Statements-Featured-Oyova-740x492.jpg"
+          alt="Career Growth"
+          class="rounded-lg shadow-lg"
+        />
       </div>
+    </div>
+    <div class="sm:w-1/2 p-5 animted-box" [@scaleIn] >
+      <div class="text ">
+        <span class="text-gray-500 border-b-2 border-yellow-400 uppercase"
+          >Our Mission</span
+        >
+        <h2 class="my-4 font-bold text-3xl sm:text-4xl text-navy-700">
+          A One-Stop Solution for Your Career Growth
+        </h2>
+        <p class="text-gray-700 text-lg">
+          At Career Cafe, we serve solutions, not just coffee! Whether you’re a
+          student seeking educational guidance, a job seeker exploring career
+          opportunities, or a professional aiming for permanent residency (PR)
+          and global prospects, we have the right resources and expert mentors
+          to guide you.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Vision Section -->
+  <div class="sm:flex flex-row-reverse items-center mt-12">
+    <div class="sm:w-1/2 p-5 animted-box" [@fadeInUp]>
+      <div class="text">
+        <span class="text-gray-500 border-b-2 border-yellow-400 uppercase"
+          >Our Vision</span
+        >
+        <h2 class="my-4 font-bold text-3xl sm:text-4xl text-navy-700">
+          Empowering Your Career Journey
+        </h2>
+        <p class="text-gray-700 text-lg">
+          At Career Cafe, we’re more than just a coffee shop—we’re your partner
+          in growth. Whether you’re a student exploring educational paths, a job
+          seeker navigating career opportunities, or a professional aiming for
+          global success, we provide the resources, mentorship, and support you
+          need to thrive.
+        </p>
+      </div>
+    </div>
+    <div class="sm:w-1/2 p-10">
+      <div class="image object-center text-center animated-box" [@bounceIn]>
+        <img
+          src="https://nirmanodisha.org/wp-content/uploads/2020/12/vision.jpg"
+          alt="Career Growth"
+          class="rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- Call to Action -->
+  <div class="mt-16 text-center animted-box flip-in-box" [@flipIn]>
+    <h2 class="font-bold text-3xl sm:text-4xl text-navy-700 ">
+      Start Your Career Journey with Us!
+    </h2>
+    <p class="text-gray-700 mt-4 text-lg">
+      Step in, sip your coffee, and let’s craft your success story together.
+    </p>
+    <a [routerLink]="'/franchise'"><button
+      class="mt-6 px-6 py-3 bg-yellow-400 text-navy-700 text-lg font-bold rounded-lg shadow-md hover:bg-yellow-500"
+    >
+      Become a Franchise
+    </button></a>
   </div>
 </div>

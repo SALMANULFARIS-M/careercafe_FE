@@ -39,6 +39,9 @@ export class CommonService {
   registerappoinment(userData: any): Observable<any> {
     return this.http.post(`${this.backendUrl}/api/appointment`, userData);
   }
+  contact(userData: any): Observable<any> {
+    return this.http.post(`${this.backendUrl}/api/contact`, userData);
+  }
 }
 
 

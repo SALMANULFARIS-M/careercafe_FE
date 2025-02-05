@@ -1,50 +1,19 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { TimeFormatPipe } from '../../pipes/time-format.pipe';
 import { CommonService } from '../../services/common.service';
+import { bounceIn, fadeInUp, flipIn, scaleIn } from '../../constants/animation';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule,TimeFormatPipe],
+  imports: [CommonModule, ReactiveFormsModule,TimeFormatPipe,RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  animations: [
-    // Fade In Up Animation
-    trigger('fadeInUp', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('0.5s ease-out', style({ opacity: 1, transform: 'translateY(0)' })), // Increased to 0.5s
-      ]),
-    ]),
-
-    // Flip In Animation
-    trigger('flipIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'rotateY(90deg)' }),
-        animate('0.5s ease-out', style({ opacity: 1, transform: 'rotateY(0)' })), // Increased to 0.5s
-      ]),
-    ]),
-
-    // Scale In Animation
-    trigger('scaleIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.8)' }),
-        animate('0.5s ease-out', style({ opacity: 1, transform: 'scale(1)' })), // Increased to 0.5s
-      ]),
-    ]),
-
-    // Bounce In Animation
-    trigger('bounceIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-20px) scale(0.8)' }),
-        animate('1s cubic-bezier(0.68, -0.55, 0.27, 1.55)', style({ opacity: 1, transform: 'translateY(0) scale(1)' })), // Increased to 1s
-      ]),
-    ]),
-  ]
+  animations: [fadeInUp, flipIn, scaleIn, bounceIn],
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {

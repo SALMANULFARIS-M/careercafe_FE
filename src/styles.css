@@ -13,3 +13,19 @@ body {
     "wdth" 100;
 }
 
+.animated-box {
+  opacity: 0;
+  transform: translateY(20px); /* Adjust as per your design */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.flip-in-box {
+  opacity: 0;
+  transform: rotateY(90deg); /* Start from rotated state */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-active {
+  opacity: 1;
+  transform: rotateY(0); /* Reset rotation to make the element visible */
+}

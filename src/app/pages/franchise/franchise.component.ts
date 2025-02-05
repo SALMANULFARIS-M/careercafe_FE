@@ -1,21 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import {  FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonService } from '../../services/common.service';
 import { State } from '../../constants/states';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-franchise',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './franchise.component.html',
   styleUrl: './franchise.component.css'
 })
 
 
 export class FranchiseComponent implements OnInit, AfterViewInit {
-
+  constructor(private fb: FormBuilder, private service: CommonService) {
+    this.registerForm = this.fb.group({
+      name: ["", [Validators.required]],
+      mobile: ['', [Validators.required, Validators.pattern(/^\+\d{1,3}\s\d{7,12}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]]
+    });
+  }
+  registerForm: FormGroup
   currentSlide = 0;
   intervalId: any;
   states: State[] = [];
@@ -23,17 +31,9 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
   selectedState = '';
   countries: { name: string; dialCode: string }[] = [];
   selectedDialCode: string = '';
-  isLoading = false; // Control the loading spinner visibility
-  registerForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    mobile: new FormControl('', [Validators.required, Validators.pattern(/^\+\d{1,3}\s\d{7,12}$/)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    state: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required])
-  });
+  isLoading = false; // Control the loading spinner visibili
 
 
-  constructor(private http: HttpClient, private service: CommonService, private fb: FormGroup) { }
   slides = [
     { image: 'cc1.png', text: 'Caption for Image 1', alt: 'Slide 1' },
     { image: 'https://pixlr.com/images/generator/how-to-generate.webp', text: 'Caption for Image 1', alt: 'Slide 2' },
@@ -47,6 +47,7 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
     throw new Error('Method not implemented.');
   }
   ngOnInit() {
+    this.isLoading = false
     this.startAutoSlide();
     this.service.getCountries().subscribe((data) => {
       this.countries = data;
@@ -59,6 +60,8 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
     });
     this.states = this.service.getStates();
   }
+
+
 
   ngOnDestroy() {
     clearInterval(this.intervalId);
@@ -93,6 +96,7 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
     const selectedStateObj = this.states.find(state => state.state === this.selectedState);
     this.districts = selectedStateObj ? selectedStateObj.districts : [];
   }
+
 
   submitForm() {
     if (this.registerForm.valid) {

@@ -93,6 +93,8 @@
               <option
                 *ngFor="let country of countries"
                 [value]="country.dialCode"
+                [selected]="country.name=='IN'"
+
               >
                 {{ country.dialCode }} ({{ country.name }})
               </option>
@@ -184,18 +186,11 @@
         </div>
 
         <button
-          type="submit"
-          class="w-full bg-yellow-400 text-navy-700 py-3 px-4 text-lg rounded-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-200"
-        >
-          <!-- Spinner while submitting -->
-          <span
-            *ngIf="isLoading"
-            class="spinner-border spinner-border-sm"
-            role="status"
-            aria-hidden="true"
-          ></span>
-          <span *ngif="!isLoading">Register</span>
-        </button>
+        type="submit"
+        class="w-full bg-yellow-400 text-navy-700 py-3 px-4 text-lg rounded-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-200"
+      >
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span *ngIf="!isLoading">Register</span>  </button>
       </form>
     </div>
   </div>
