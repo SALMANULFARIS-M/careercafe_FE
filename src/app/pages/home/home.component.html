@@ -1,6 +1,6 @@
-<body class="bg-gray-100 text-gray-800"  >
+<body class="bg-gray-100 text-gray-800">
   <!-- Hero Section -->
-  <section class="bg-gray-100 py-20 text-center relative mx-1 animated-box"   >
+  <section class="bg-gray-100 py-20 text-center relative mx-1 animated-box">
     <div class="absolute inset-0">
       <img
         src="cc1.png"
@@ -9,10 +9,14 @@
       />
       <div class="absolute inset-0 bg-black opacity-40"></div>
     </div>
-    <div class="container relative mx-auto px-4 my-24 animated-box" id="first-section" @fadeInUp>
+    <div
+      class="container relative mx-auto px-4 my-24 animated-box"
+      id="first-section"
+      @fadeInUp
+    >
       <h2 class="text-4xl font-extrabold text-white mb-6">
         <span>Your One-Stop Solution for</span><br />
-        <span class="text-yellow-400"
+        <span class="md:text-yellow-400"
           >Education, Career, and Immigration Advice</span
         >
       </h2>
@@ -33,10 +37,31 @@
     </div>
   </section>
 
-  <section class="bg-gray-100 py-20 text-center" >
-    <div class="container mx-auto px-4" >
+  <section
+    class="relative bg-gray-100 py-16 text-center block md:hidden bg-[url('https://www.transparenttextures.com/patterns/old-moon.png')] bg-repeat"
+  >
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center">
+        <a
+          href="/franchise"
+          class="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 text-navy font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:from-yellow-300 hover:to-yellow-400 animate-[bounce_1.5s_infinite]"
+        >
+          Become a Franchise
+        </a>
+      </div>
+      <!-- <p class="mt-4 text-gray-700 text-lg animate-pulse">
+        🚀 Start your journey with us today!
+      </p> -->
+    </div>
+  </section>
+
+  <section class="bg-gray-100 py-20 text-center">
+    <div class="container mx-auto px-4">
       <h2 class="text-4xl font-extrabold text-navy mb-6">
-        Welcome to <span class="text-yellow-400 animated-box" [@scaleIn]>Career Café!</span>
+        Welcome to
+        <span class="text-yellow-400 animated-box" [@scaleIn]
+          >Career Café!</span
+        >
       </h2>
       <p class="text-lg text-gray-700 mb-8 animated-box" [@scaleIn]>
         Career Café is a unique platform designed to help individuals explore
@@ -47,10 +72,13 @@
       </p>
 
       <h3 class="text-3xl font-bold text-navy mb-4">What We Offer</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box" [@flipIn]>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box"
+        [@flipIn]
+      >
         <div
           *ngFor="let service of services"
-          class=" service-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+          class="service-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
         >
           <h4 class="text-xl font-semibold text-yellow-400 mb-2">
             {{ service.title }}
@@ -60,7 +88,10 @@
       </div>
 
       <h3 class="text-3xl font-bold text-navy mt-12 mb-6">Why Choose Us?</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box" [@flipIn]>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box"
+        [@flipIn]
+      >
         <div
           *ngFor="let benefit of benefits"
           class="animate-fade-in animate-slide-up benefit-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
@@ -76,10 +107,16 @@
 
   <!-- Detail Section -->
   <section id="about" class="py-20 bg-white">
-    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center animated-box" [@bounceIn]>
+    <div
+      class="container mx-auto px-6 flex flex-col lg:flex-row items-center animated-box"
+      [@bounceIn]
+    >
       <!-- Image Container -->
       <div class="lg:w-1/2 grid grid-cols-2 gap-4">
-        <div *ngFor="let img of images" class="relative w-full h-full animate-fade-in animate-slide-up" >
+        <div
+          *ngFor="let img of images"
+          class="relative w-full h-full animate-fade-in animate-slide-up"
+        >
           <img
             [src]="img"
             alt="Career Guidance"
@@ -93,21 +130,24 @@
       <div class="lg:w-1/2 mt-10 lg:mt-0 text-center lg:text-left">
         <!-- Main Heading -->
         <h3
-          class="text-[100px] font-normal text-[#19293b] leading-none font-[Brush Script MT] animated-box" [@scaleIn]
+          class="text-[100px] font-normal text-[#19293b] leading-none font-[Brush Script MT] animated-box"
+          [@scaleIn]
         >
           Find Your Career Path
         </h3>
         <!-- Subheading -->
         <h4
-          class="text-[47px] font-bold text-[#ffc20e] tracking-[9.4px] font-[Copperplate] mt-4 animated-box" [@scaleIn]
+          class="text-[47px] font-bold text-[#ffc20e] tracking-[9.4px] font-[Copperplate] mt-4 animated-box"
+          [@scaleIn]
         >
-        Your Career Compass, Fueled by Coffee        </h4>
+          Your Career Compass, Fueled by Coffee
+        </h4>
         <div class="my-4"><i class="fas fa-asterisk text-yellow-400"></i></div>
         <!-- Paragraph -->
         <p class="text-lg text-gray-700 animated-box" [@scaleIn]>
-          Enjoy a warm cup of Cofee while exploring a career roadmap tailored just
-          for you. Get expert guidance, insights, and motivation to achieve your
-          professional goals in a relaxed and inspiring environment.
+          Enjoy a warm cup of Cofee while exploring a career roadmap tailored
+          just for you. Get expert guidance, insights, and motivation to achieve
+          your professional goals in a relaxed and inspiring environment.
         </p>
       </div>
     </div>
@@ -116,7 +156,12 @@
   <!-- How It Works -->
   <section class="bg-gray-100 py-20 text-center">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-navy mb-12 animated-box " [@scaleIn]>How It Works</h2>
+      <h2
+        class="text-4xl font-extrabold text-navy mb-12 animated-box"
+        [@scaleIn]
+      >
+        How It Works
+      </h2>
 
       <!-- Step 1 - Image Layout -->
       <div
@@ -129,7 +174,7 @@
           <h3 class="text-2xl font-semibold text-navy mb-2">
             Book an Appointment
           </h3>
-          <p class="text-lg text-gray-600 ">
+          <p class="text-lg text-gray-600">
             Schedule a session with our expert consultants through our website
             or at one of our café locations.
           </p>
@@ -147,7 +192,7 @@
       <div
         class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
       >
-        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+        <div class="sm:w-1/2 md:order-2 mr-5 animated-box" [@scaleIn]>
           <div class="flex items-center justify-center mb-4">
             <div class="text-4xl text-yellow-400 font-bold">02</div>
           </div>
@@ -159,7 +204,7 @@
             immigration aspirations.
           </p>
         </div>
-        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+        <div class="sm:w-1/2 md:order-1 mb-6 sm:mb-0 animated-box" [@bounceIn]>
           <img
             src="https://st2.depositphotos.com/1006009/10540/i/450/depositphotos_105405522-stock-photo-set-goals-that-matter-on.jpg"
             alt="Book Appointment"
@@ -196,7 +241,7 @@
       <div
         class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
       >
-        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+        <div class="sm:w-1/2 md:order-2  mr-5 animated-box" [@scaleIn]>
           <div class="flex items-center justify-center mb-4">
             <div class="text-4xl text-yellow-400 font-bold">04</div>
           </div>
@@ -205,7 +250,7 @@
             With our guidance, embark on your journey to success.
           </p>
         </div>
-        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+        <div class="sm:w-1/2 md:order-1 mb-6 sm:mb-0 animated-box" [@bounceIn]>
           <img
             src="https://st3.depositphotos.com/1006009/18531/i/450/depositphotos_185310142-stock-photo-take-action-motivation-concept-on.jpg"
             alt="Book Appointment"
@@ -215,7 +260,10 @@
       </div>
 
       <!-- Network Opportunities - Emphasis Section -->
-      <div class="mt-12 bg-yellow-400 text-navy p-8 rounded-lg shadow-lg animated-box" [@scaleIn]>
+      <div
+        class="mt-12 bg-yellow-400 text-navy p-8 rounded-lg shadow-lg animated-box"
+        [@scaleIn]
+      >
         <h3 class="text-2xl font-bold mb-4">Join a Network of Opportunities</h3>
         <p class="text-lg">
           Our collaborative network of consultancies ensures that you have
@@ -232,7 +280,8 @@
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
         <div
           *ngFor="let event of events"
-          class="relative bg-cover bg-center h-40 rounded shadow-md flex items-center justify-center text-white text-xl font-bold animated-box flip-in-box" [@flipIn]
+          class="relative bg-cover bg-center h-40 rounded shadow-md flex items-center justify-center text-white text-xl font-bold animated-box flip-in-box"
+          [@flipIn]
           [style.backgroundImage]="'url(' + event.image + ')'"
         >
           <div class="bg-black bg-opacity-50 absolute inset-0 rounded"></div>
@@ -252,7 +301,8 @@
         <form
           (ngSubmit)="onSubmit()"
           [formGroup]="admissionForm"
-          class="grid grid-cols-1 lg:grid-cols-2 gap-8 animated-box" [@fadeInUp]
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 animated-box"
+          [@fadeInUp]
         >
           <!-- Left Column -->
           <div>
@@ -278,9 +328,7 @@
             </div>
 
             <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Phone</label
-              >
+              <label class="block text-white font-semibold mb-2">Phone</label>
               <input
                 type="tel"
                 formControlName="phone"
@@ -300,9 +348,7 @@
             </div>
 
             <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Email</label
-              >
+              <label class="block text-white font-semibold mb-2">Email</label>
               <input
                 type="email"
                 formControlName="email"
@@ -320,20 +366,24 @@
               </span>
             </div>
             <div class="mb-6">
-              <label class="block text-white font-semibold mb-2">Select Time</label>
+              <label class="block text-white font-semibold mb-2"
+                >Select Time</label
+              >
               <select
                 formControlName="time"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
                 required
               >
-              <option value="" disabled selected>Select a time</option>
-              <option *ngFor="let time of availableTimes" [value]="time">
-                {{ time | timeFormat }} <!-- Custom pipe to format the time to AM/PM -->
-              </option>
+                <option value="" disabled selected>Select a time</option>
+                <option *ngFor="let time of availableTimes" [value]="time">
+                  {{ time | timeFormat }}
+                  <!-- Custom pipe to format the time to AM/PM -->
+                </option>
               </select>
               <span
                 *ngIf="
-                  admissionForm.controls['time'].invalid && admissionForm.controls['time'].touched
+                  admissionForm.controls['time'].invalid &&
+                  admissionForm.controls['time'].touched
                 "
                 class="text-red-500"
               >
@@ -371,6 +421,7 @@
                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
               >
                 <option value="palakkad">Palakkad</option>
+                <option value="online">Online</option>
                 <option value="bengaluru">Bengaluru</option>
               </select>
             </div>
@@ -406,14 +457,20 @@
               [disabled]="!admissionForm.valid || isLoading"
             >
               <!-- Spinner while submitting -->
-              <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span
+                *ngIf="isLoading"
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
 
               <!-- Button Text -->
-              <span *ngIf="!isLoading && !admissionForm.valid">Please complete the form</span>
+              <span *ngIf="!isLoading && !admissionForm.valid"
+                >Please complete the form</span
+              >
               <span *ngIf="!isLoading && admissionForm.valid">Submit</span>
             </button>
           </div>
-
         </form>
       </div>
     </div>

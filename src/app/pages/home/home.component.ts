@@ -1,10 +1,10 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { TimeFormatPipe } from '../../pipes/time-format.pipe';
+import { CommonService } from '../../services/common.service';
 
 
 @Component({
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     '17:00'  // 05:00 PM
   ];
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private http: HttpClient) {
+  constructor(private el: ElementRef, private renderer: Renderer2, private service: CommonService) {
     this.setAvailableTimes();
   }
   isLoading = false; // Control the loading spinner visibility
@@ -222,9 +222,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (this.admissionForm.valid) {
       const formData = this.admissionForm.value;
       this.isLoading = true; // Show spinner while submitting
-      this.http.post('http://localhost:5000/api/appointment', formData)
-        .subscribe(
-          (response: any) => {
+      this.service.registerappoinment(formData)
+        .subscribe({
+          next: response => {
             this.isLoading = false;
             Swal.fire({
               icon: 'success',
@@ -233,7 +233,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               confirmButtonText: 'Okay'
             });
           },
-          (error) => {
+          error: err  => {
             this.isLoading = false; // Hide the spinner on error
             // Use SweetAlert2 for attractive error alert
             Swal.fire({
@@ -243,7 +243,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               confirmButtonText: 'Try Again'
             });
           }
-        );
+    });
     } else {
       Swal.fire({
         icon: 'warning',

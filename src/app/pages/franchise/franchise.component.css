@@ -1,0 +1,16 @@
+/* partner-registration.component.css */
+.carousel-slide {
+  display: none; /* Initially hide all slides */
+}
+
+.carousel-slide.active {
+  display: block; /* Show the active slide */
+}
+/* image-carousel.component.css */
+.carousel-item {
+ color: aqua;
+}
+
+.carousel-item img {
+  object-fit: cover; /* or contain, depending on your preference */
+}

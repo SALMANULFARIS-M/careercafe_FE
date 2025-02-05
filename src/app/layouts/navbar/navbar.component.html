@@ -14,7 +14,7 @@
       <!-- Toggle button -->
       <button
         (click)="toggleMobileMenu()"
-        class="navbar-burger flex items-center text-blue-600 p-3"
+        class="navbar-burger flex items-center text-white p-3"
       >
         <svg
           class="block h-4 w-4 fill-current"
@@ -91,7 +91,7 @@
     <a
       routerLink="/franchise"
       routerLinkActive="active-link animated-underline"
-      class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md transition-all duration-300 ease-in-out hover:border-yellow-400 hover:border-2"
+      class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md  hover:border-2"
     >
       Become a Franchise
     </a>
@@ -138,6 +138,7 @@
             routerLink="/"
             routerLinkActive="active-link-mobile animated-underline-mobile"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="toggleMobileMenu()"
             >Home</a
           >
         </li>
@@ -146,6 +147,7 @@
             class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
             routerLink="/about"
             routerLinkActive="active-link-mobile animated-underline-mobile"
+            (click)="toggleMobileMenu()"
             >About Us</a
           >
         </li>
@@ -154,6 +156,7 @@
             class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
             routerLink="/contact"
             routerLinkActive="active-link-mobile animated-underline-mobile"
+            (click)="toggleMobileMenu()"
             >Contact</a
           >
         </li>
@@ -162,6 +165,7 @@
             class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
             routerLink="/franchise"
             routerLinkActive="active-link-mobile animated-underline-mobile"
+            (click)="toggleMobileMenu()"
             >Be a Franchise</a
           >
         </li>
