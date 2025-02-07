@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { State, STATES } from '../constants/states'; // Import states data
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 interface Country {
   name: string;
   dialCode: string;
 }
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class CommonService {
   private statesAndDistricts: State[] = STATES; // Use imported data
   private apiUrl = 'https://restcountries.com/v3.1/all'; // API URL
-  private backendUrl = 'http://localhost:5000/';
+  private backendUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +30,7 @@ export class CommonService {
       )
     );
   }
+
   // Get all states
   getStates(): State[] {
     return this.statesAndDistricts

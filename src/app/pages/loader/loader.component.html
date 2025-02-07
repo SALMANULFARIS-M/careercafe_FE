@@ -1,0 +1,10 @@
+<div class="loader-container" *ngIf="isLoading$ | async">
+  <div class="blur-background"></div>
+  <div class="rotating-squares">
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+  </div>
+  <h1 class="text-gray-100 font-extrabold text-2xl mt-3">Loading...</h1>
+</div>

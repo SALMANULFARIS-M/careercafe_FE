@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule,TimeFormatPipe,RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, TimeFormatPipe, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [fadeInUp, flipIn, scaleIn, bounceIn],
@@ -40,6 +40,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
       const firstSection = document.getElementById('first-section');
       firstSection?.classList.add('animate-active');
     }, 0);
+
+    this.admissionForm.controls['date'].valueChanges.subscribe(() => {
+      this.setAvailableTimes();
+    });
+
+    this.setAvailableTimes();
   }
 
   ngAfterViewInit(): void {
@@ -155,17 +161,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (inputDate < today) {
       return { pastDate: true }; // Prevent selecting past dates
     }
-
     return null; // Valid date
   }
   setAvailableTimes() {
-    // Filter out past times based on current time
-    this.availableTimes = this.allTimes.filter((time) => {
-      const [hours, minutes] = time.split(':').map(num => parseInt(num, 10));
-      const timeInMinutes = hours * 60 + minutes;
-      const currentTimeInMinutes = this.currentTime.getHours() * 60 + this.currentTime.getMinutes();
+    const selectedDate = this.admissionForm.get('date')?.value;
 
-      return timeInMinutes > currentTimeInMinutes;
+    if (!selectedDate) {
+      this.availableTimes = []; // Clear times if no date is selected
+      return;
+    }
+
+    const selectedDateObj = new Date(selectedDate);
+    const today = new Date();
+
+    this.availableTimes = this.allTimes.filter((time) => {
+      const [hours, minutes] = time.split(':').map(Number); // Use Number for parsing
+
+      const combinedDateTime = new Date(selectedDateObj);
+      combinedDateTime.setHours(hours, minutes, 0, 0); // Set time on the selected date
+
+      if (selectedDateObj.toDateString() === today.toDateString()) { // Check if it is today
+        return combinedDateTime > new Date(); //Compare with current time
+      } else {
+        return combinedDateTime > new Date(selectedDateObj.getFullYear(), selectedDateObj.getMonth(), selectedDateObj.getDate(), 0, 0); //If not today, show all times
+      }
     });
   }
 
@@ -202,7 +221,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               confirmButtonText: 'Okay'
             });
           },
-          error: err  => {
+          error: err => {
             this.isLoading = false; // Hide the spinner on error
             // Use SweetAlert2 for attractive error alert
             Swal.fire({
@@ -212,7 +231,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
               confirmButtonText: 'Try Again'
             });
           }
-    });
+        });
     } else {
       Swal.fire({
         icon: 'warning',

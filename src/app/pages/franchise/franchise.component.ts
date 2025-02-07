@@ -17,7 +17,7 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
   constructor(private fb: FormBuilder, private service: CommonService) {
     this.registerForm = this.fb.group({
       name: ["", [Validators.required]],
-      mobile: ['', [Validators.required, Validators.pattern(/^\+\d{1,3}\s\d{7,12}$/)]],
+      mobile: ['', [Validators.required, Validators.pattern(/^\d{7,12}$/)]],
       email: ['', [Validators.required, Validators.email]],
       state: ['', [Validators.required]],
       city: ['', [Validators.required]]
@@ -35,11 +35,12 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
 
 
   slides = [
-    { image: 'cc1.png', text: 'Caption for Image 1', alt: 'Slide 1' },
-    { image: 'https://pixlr.com/images/generator/how-to-generate.webp', text: 'Caption for Image 1', alt: 'Slide 2' },
-    { image: 'cc1.png', text: 'Caption for Image 1', alt: 'Slide 3' },
-    { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ3Z5FOcmX6WwMIkyd5cgT-uL_sO4EDgIgQ&s', text: 'Caption for Image 1', alt: 'Slide 4' },
-    { image: 'https://pixlr.com/images/generator/how-to-generate.webp', text: 'Caption for Image 1', alt: 'Slide 5' }
+    { image: 'https://img.freepik.com/premium-photo/national-flags-countries-3d_665346-34308.jpg', text: 'Connection With 120+ countries', alt: 'Slide 5' },
+    { image: 'https://st4.depositphotos.com/14431644/38497/i/450/depositphotos_384971004-stock-photo-writing-note-showing-jobs-business.jpg', text: 'Global Job Opportunities', alt: 'Slide 1' },
+    { image: 'https://static.vecteezy.com/system/resources/previews/031/026/378/non_2x/happy-businesspeople-smiling-cheerfully-during-a-meeting-in-a-coffee-shop-group-of-successful-business-professionals-working-as-a-team-in-a-multicultural-workplace-photo.jpg', text: 'Tailored Guidance for International Careers', alt: 'Slide 2' },
+    { image: 'https://media.istockphoto.com/id/666600116/photo/network-of-consumers-in-the-hands.jpg?s=612x612&w=0&k=20&c=olg9UjEfRo55tJVSMSIfSXu8nk9Z39-Nir5MZNWnEmA=', text: 'Comprehensive Support', alt: 'Slide 3' },
+    { image: 'https://png.pngtree.com/png-vector/20221020/ourmid/pngtree-queue-of-immigrants-standing-and-holding-luggage-png-image_6330920.png', text: 'Permanent Residency (PR) Pathways:', alt: 'Slide 4' },
+
   ];
 
 
@@ -101,10 +102,16 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
   submitForm() {
     if (this.registerForm.valid) {
       this.isLoading = true; // Show spinner while submitting
-      this.service.registerUser(this.registerForm.value).subscribe({
+      const mobileNumber = this.registerForm.get('mobile')?.value;
+      const fullPhoneNumber = this.selectedDialCode + mobileNumber; // Combine dial code and number
+
+      const userData = { ...this.registerForm.value, mobile: fullPhoneNumber }; // Include full number in request
+
+      this.service.registerUser(userData).subscribe({
+
         next: response => {
-          console.log('Registration successful:', response);
           this.isLoading = false;
+          this.registerForm.reset();
           Swal.fire({
             icon: 'success',
             title: 'Success!',

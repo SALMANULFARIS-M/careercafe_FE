@@ -1,0 +1,65 @@
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  filter: blur(8px); /* Apply blur to the background */
+  z-index: -1; /* Place the blur behind the loader */
+}
+
+.rotating-squares {
+  display: flex;
+  justify-content: space-around;
+  width: 80px;
+  align-items: center;
+}
+
+.square {
+  width: 20px;
+  height: 20px;
+  background-color: #FACC15;
+  animation: rotateSquare 1.2s infinite ease-in-out;
+  display: inline-block;
+  transform-origin: center;
+}
+
+.square:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.square:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.square:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.square:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+@keyframes rotateSquare {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+}

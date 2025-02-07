@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from '../../services/common.service';
 import Swal from 'sweetalert2';
@@ -10,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   contactForm: FormGroup;
 
   constructor(private fb: FormBuilder, private service: CommonService) {
@@ -20,6 +19,11 @@ export class ContactComponent {
       message: ['', Validators.required],
     });
   }
+  ngOnInit(): void {
+
+
+  }
+
   onSubmit() {
     if (this.contactForm.valid) {
       this.service.contact(this.contactForm.value)
