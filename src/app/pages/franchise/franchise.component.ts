@@ -53,7 +53,6 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
     this.service.getCountries().subscribe((data) => {
       this.countries = data;
       const india = this.countries.find(country => country.name === 'IN')
-      console.log(india);
       // Or whatever property holds the name
       if (india) {
         this.selectedDialCode = india.dialCode; // Assuming callingCodes is an array, take the first one. Adjust if needed.
@@ -61,9 +60,6 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
     });
     this.states = this.service.getStates();
   }
-
-
-
   ngOnDestroy() {
     clearInterval(this.intervalId);
   }
@@ -120,7 +116,6 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
           });
         },
         error: err => {
-          console.error('Registration failed:', err);
           this.isLoading = false; // Hide the spinner on error
           Swal.fire({
             icon: 'error',

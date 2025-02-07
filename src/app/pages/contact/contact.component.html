@@ -63,6 +63,15 @@
                 for="email"
                 >Email address</label
               >
+              <span
+                *ngIf="
+                  contactForm.controls['email'].invalid &&
+                  contactForm.controls['email'].touched
+                "
+                class="text-red-500"
+              >
+                Please enter a valid email address.
+              </span>
             </div>
 
             <div class="relative mb-6" data-te-input-wrapper-init>
