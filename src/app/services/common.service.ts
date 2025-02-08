@@ -16,7 +16,7 @@ interface Country {
 export class CommonService {
   private statesAndDistricts: State[] = STATES; // Use imported data
   private apiUrl = 'https://restcountries.com/v3.1/all'; // API URL
-  private backendUrl = 'https://careercafe-be.onrender.com';
+  private backendUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) { }
 
