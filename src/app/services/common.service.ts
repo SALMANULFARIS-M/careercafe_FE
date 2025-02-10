@@ -3,6 +3,8 @@ import { State, STATES } from '../constants/states'; // Import states data
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { Observable} from 'rxjs';
+import { environment } from '..//../environments/environment';
+const backendUrl = environment.apiUrl;
 
 interface Country {
   name: string;
@@ -16,7 +18,7 @@ interface Country {
 export class CommonService {
   private statesAndDistricts: State[] = STATES; // Use imported data
   private apiUrl = 'https://restcountries.com/v3.1/all'; // API URL
-  private backendUrl = 'https://careercafe.co:5000';
+
 
   constructor(private http: HttpClient) { }
 
@@ -37,13 +39,13 @@ export class CommonService {
   }
 
   registerUser(userData: any): Observable<any> {
-    return this.http.post(`${this.backendUrl}/api/patnerRegister`, userData);
+    return this.http.post(`${backendUrl}/patnerRegister`, userData);
   }
   registerappoinment(userData: any): Observable<any> {
-    return this.http.post(`${this.backendUrl}/api/appointment`, userData);
+    return this.http.post(`${backendUrl}/appointment`, userData);
   }
   contact(userData: any): Observable<any> {
-    return this.http.post(`${this.backendUrl}/api/contact`, userData);
+    return this.http.post(`${backendUrl}/contact`, userData);
   }
 }
 
