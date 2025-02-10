@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   isNotFound: boolean = false;
   constructor(private router: Router) {
     this.router.events
@@ -24,5 +24,20 @@ export class AppComponent {
         // Check if the current URL is the 404 page
         this.isNotFound = event.urlAfterRedirects === '/404';
       });
+  }
+  ngOnInit(): void {
+    var toTopButton = document.getElementById("to-top-button") as HTMLElement;
+
+    // When the user scrolls down 200px from the top of the document, show the button
+    window.onscroll = function () {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        toTopButton.classList.remove("hidden");
+      } else {
+        toTopButton.classList.add("hidden");
+      }
+    }
+  }
+  goToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
