@@ -32,7 +32,7 @@
 
 #navbar.scrolled {
   padding: 0; /* No padding when scrolled */
-  background-color: #192c41; /* Slightly darker shade when scrolled */
+  background-color:rgb(21,38,58); /* Slightly darker shade when scrolled */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 .navbar-menu {
