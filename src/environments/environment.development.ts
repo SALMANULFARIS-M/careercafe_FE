@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://51.21.136.96/api'  // Use AWS Public IP in dev
+  apiUrl: 'http://localhost:5000'  // Use AWS Public IP in dev
 };

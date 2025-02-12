@@ -214,6 +214,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         .subscribe({
           next: response => {
             this.isLoading = false;
+            this.admissionForm.reset();
             Swal.fire({
               icon: 'success',
               title: 'Success!',

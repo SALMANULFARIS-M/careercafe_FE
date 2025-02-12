@@ -16,8 +16,8 @@
     >
       <h2 class="text-4xl font-extrabold text-white mb-6">
         <span>Your One-Stop Solution for</span><br />
-        <span class="md:text-yellow-400"
-          > Career, Immigration Advice and Education</span
+        <span class="md:text-yellow-400">
+          Career, Immigration Advice and Education</span
         >
       </h2>
       <br />
@@ -42,7 +42,7 @@
     <div class="container mx-auto px-4">
       <div class="flex justify-center">
         <a
-        [routerLink]="'/franchise'"
+          [routerLink]="'/franchise'"
           class="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 text-navy font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:from-yellow-300 hover:to-yellow-400 animate-[bounce_1.5s_infinite]"
         >
           Become a Franchise
@@ -240,7 +240,7 @@
       <div
         class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
       >
-        <div class="sm:w-1/2 md:order-2  mr-5 animated-box" [@scaleIn]>
+        <div class="sm:w-1/2 md:order-2 mr-5 animated-box" [@scaleIn]>
           <div class="flex items-center justify-center mb-4">
             <div class="text-4xl text-yellow-400 font-bold">04</div>
           </div>
@@ -364,6 +364,62 @@
                 Please enter a valid email address.
               </span>
             </div>
+
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Select Place</label
+              >
+              <select
+                name="place"
+                formControlName="place"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              >
+                <option value="palakkad">Palakkad</option>
+                <option value="online">Online</option>
+                <option value="bengaluru">Bengaluru</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div>
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Select Category</label
+              >
+              <select
+                name="category"
+                formControlName="category"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              >
+                <option value="domestic-admission">Domestic Admission</option>
+                <option value="abroad-admission">Abroad Admission</option>
+                <option value="abroad-job">Abroad Job</option>
+                <option value="domestic-job">Domestic Job</option>
+                <option value="pr">PR</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="block text-white font-semibold mb-2"
+                >Select Date</label
+              >
+              <input
+                type="date"
+                formControlName="date"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                [min]="getMinDate()"
+                required
+              />
+              <span
+                *ngIf="
+                  admissionForm.controls['date'].invalid &&
+                  admissionForm.controls['date'].touched
+                "
+                class="text-red-500"
+              >
+                Please select a valid date.
+              </span>
+            </div>
             <div class="mb-6">
               <label class="block text-white font-semibold mb-2"
                 >Select Time</label
@@ -387,63 +443,6 @@
                 class="text-red-500"
               >
                 Please select a valid time.
-              </span>
-            </div>
-          </div>
-
-          <!-- Right Column -->
-          <div>
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Select Category</label
-              >
-              <select
-                name="category"
-                formControlName="category"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-              >
-                <option value="domestic-admission">Domestic Admission</option>
-                <option value="abroad-admission">Abroad Admission</option>
-                <option value="abroad-job">Abroad Job</option>
-                <option value="domestic-job">Domestic Job</option>
-                <option value="pr">PR</option>
-              </select>
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Select Place</label
-              >
-              <select
-                name="place"
-                formControlName="place"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-              >
-                <option value="palakkad">Palakkad</option>
-                <option value="online">Online</option>
-                <option value="bengaluru">Bengaluru</option>
-              </select>
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Select Date</label
-              >
-              <input
-                type="date"
-                formControlName="date"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-                [min]="getMinDate()"
-                required
-              />
-              <span
-                *ngIf="
-                  admissionForm.controls['date'].invalid &&
-                  admissionForm.controls['date'].touched
-                "
-                class="text-red-500"
-              >
-                Please select a valid date.
               </span>
             </div>
           </div>
