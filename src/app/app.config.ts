@@ -3,8 +3,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, HTTP_INTERCEPTORS, withInterceptors } from '@angular/common/http';
-import { CommonService } from './services/common.service';
 import { loaderInterceptorInterceptor } from './loader-interceptor.interceptor';  // Ensure this path is correct
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +17,5 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),  // Optimizes event handling
     provideRouter(routes),
     provideAnimations(),
-    importProvidersFrom(CommonService),
   ],
 };

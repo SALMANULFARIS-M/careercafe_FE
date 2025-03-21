@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
   services = [
     { title: 'Education Guidance', description: 'Explore top universities and programs worldwide.' },
-    { title: 'Career Counseling', description: 'Find the right career path and job opportunities' },
+    { title: 'Career/Jobs', description: 'Find the right career path and job opportunities' },
     { title: 'PR and Immigration', description: 'Get expert advice on securing PR in 120 countries.' }
   ];
 
@@ -106,6 +106,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     { name: 'tech Events', image: 'https://storage.googleapis.com/techsauce-prod/ugc/uploads/2024/4/1713844557_1692263684_S__13025327_0_%282%29.jpg' },
 
   ];
+
   isValidDate(date: string): boolean {
     const enteredDate = new Date(date);
     const currentDate = new Date();
