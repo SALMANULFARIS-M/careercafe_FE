@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {  FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonService } from '../../services/common.service';
-import { State } from '../../constants/states';
-import Swal from 'sweetalert2';
+import { CommonService } from '../../../core/services/common.service';
+import { State } from '../../../shared/constants/states';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-franchise',
@@ -13,8 +13,8 @@ import Swal from 'sweetalert2';
 })
 
 
-export class FranchiseComponent implements OnInit, AfterViewInit {
-  constructor(private fb: FormBuilder, private service: CommonService) {
+export class FranchiseComponent implements OnInit {
+  constructor(private fb: FormBuilder, private service: CommonService,private toastr:ToastrService) {
     this.registerForm = this.fb.group({
       name: ["", [Validators.required]],
       mobile: ['', [Validators.required, Validators.pattern(/^\d{7,12}$/)]],
@@ -44,9 +44,7 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
   ];
 
 
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
   ngOnInit() {
     this.isLoading = false
     this.startAutoSlide();
@@ -99,39 +97,24 @@ export class FranchiseComponent implements OnInit, AfterViewInit {
     if (this.registerForm.valid) {
       this.isLoading = true; // Show spinner while submitting
       const mobileNumber = this.registerForm.get('mobile')?.value;
-      const fullPhoneNumber = this.selectedDialCode + mobileNumber; // Combine dial code and number
+      const fullPhoneNumber = this.selectedDialCode + mobileNumber;
 
-      const userData = { ...this.registerForm.value, mobile: fullPhoneNumber }; // Include full number in request
+      const userData = { ...this.registerForm.value, mobile: fullPhoneNumber };
 
       this.service.registerUser(userData).subscribe({
-
-        next: response => {
+        next: (response) => {
           this.isLoading = false;
           this.registerForm.reset();
-          Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: response.message,
-            confirmButtonText: 'Okay'
-          });
+          this.toastr.success(response.message, 'Success');
         },
-        error: err => {
-          this.isLoading = false; // Hide the spinner on error
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong! Please try again Later.',
-            confirmButtonText: 'Try Again'
-          });
+        error: (err) => {
+          this.isLoading = false;
+          this.toastr.error('Something went wrong! Please try again later.', 'Error');
         }
       });
     } else {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Invalid Form',
-        text: 'Please fill out all required fields correctly.',
-        confirmButtonText: 'Check it'
-      });
+      this.toastr.warning('Please fill out all required fields correctly.', 'Invalid Form');
     }
   }
+
 }

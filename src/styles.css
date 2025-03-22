@@ -32,3 +32,39 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.toast-container .ngx-toastr {
+  min-width: 400px;
+  max-width: 600px;
+  padding: 16px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+}
+
+.toast-success {
+  border-top: 4px solid #00b106  !important;
+  background-color: black !important;
+  color: #00b106 !important;
+}
+
+.toast-error {
+  border-top: 4px solid #e53935 !important;
+  background-color: black !important;
+  color: #e53935 !important;
+
+}
+
+.toast-warning {
+  border-top: 4px solid #fb8c00 !important;
+  background-color: black !important;
+  color: #fb8c00 !important;
+}
+
+.toast-info {
+  border-top: 4px solid #1a73e8 !important;
+  background-color: black !important;
+  color: #1a73e8 !important;
+}
+

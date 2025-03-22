@@ -1,4 +1,4 @@
-<div class="bg-gray-100 text-gray-800">
+<div class=" text-gray-800 ">
   <!-- Hero Section -->
   <section class="bg-gray-100 py-20 text-center relative mx-1 animated-box">
     <div class="absolute inset-0">
@@ -383,15 +383,11 @@
 
           <!-- Right Column -->
           <div>
+            <!-- Category -->
             <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Select Category</label
-              >
-              <select
-                name="category"
-                formControlName="category"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-              >
+              <label class="block text-white font-semibold mb-2">Select Category</label>
+              <select formControlName="category" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400">
+                <option value="" disabled>Select Category</option>
                 <option value="domestic-admission">Domestic Admission</option>
                 <option value="abroad-admission">Abroad Admission</option>
                 <option value="abroad-job">Abroad Job</option>
@@ -399,54 +395,45 @@
                 <option value="pr">PR</option>
               </select>
             </div>
+
+            <!-- Date -->
             <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Select Date</label
-              >
+              <label class="block text-white font-semibold mb-2">Select Date</label>
               <input
                 type="date"
                 formControlName="date"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
                 [min]="getMinDate()"
-                required
+                (change)="setAvailableTimes()"
               />
-              <span
-                *ngIf="
-                  admissionForm.controls['date'].invalid &&
-                  admissionForm.controls['date'].touched
-                "
-                class="text-red-500"
-              >
-                Please select a valid date.
+              <span *ngIf="admissionForm.get('date')?.errors?.['pastDate'] && admissionForm.get('date')?.touched" class="text-red-500">
+                Past dates are not allowed.
+              </span>
+              <span *ngIf="admissionForm.get('date')?.errors?.['sundayNotAllowed'] && admissionForm.get('date')?.touched" class="text-red-500">
+                Sunday is not selectable.
               </span>
             </div>
+
+            <!-- Time -->
             <div class="mb-6">
-              <label class="block text-white font-semibold mb-2"
-                >Select Time</label
-              >
+              <label class="block text-white font-semibold mb-2">Select Time</label>
               <select
                 formControlName="time"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
                 required
               >
-                <option value="" disabled selected>Select a time</option>
+                <option value="" disabled>Select a time</option>
                 <option *ngFor="let time of availableTimes" [value]="time">
-                  {{ time | timeFormat }}
-                  <!-- Custom pipe to format the time to AM/PM -->
+                  {{ time | timeFormat }} <!-- Assuming a custom pipe for AM/PM -->
                 </option>
               </select>
-              <span
-                *ngIf="
-                  admissionForm.controls['time'].invalid &&
-                  admissionForm.controls['time'].touched
-                "
-                class="text-red-500"
-              >
-                Please select a valid time.
+              <span *ngIf="admissionForm.get('time')?.errors?.['invalidTime'] && admissionForm.get('time')?.touched" class="text-red-500">
+                Time must be between 10:00 AM and 5:00 PM.
               </span>
             </div>
           </div>
-c
+
+
           <!-- Submit Button (Outside the Grid Columns) -->
           <div class="col-span-1 lg:col-span-2">
             <button

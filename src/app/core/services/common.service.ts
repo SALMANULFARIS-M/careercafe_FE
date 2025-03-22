@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { State, STATES } from '../constants/states'; // Import states data
+import { State, STATES } from '../../shared/constants/states'; // Import states data
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
-import { Observable} from 'rxjs';
-import { environment } from '..//../environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
 const backendUrl = environment.apiUrl;
 
 interface Country {

@@ -1,7 +1,4 @@
-<app-loader></app-loader>
-<app-navbar *ngIf="!isNotFound"></app-navbar>
 <router-outlet></router-outlet>
-<app-footer *ngIf="!isNotFound"></app-footer>
 
 <!-- WhatsApp Floating Button -->
 <a
@@ -13,12 +10,5 @@
   <i class='bx bxl-whatsapp'></i>
 </a>
 
-<!-- Go To Top Button -->
-<button
-  id="to-top-button"
-  (click)="goToTop()"
-  title="Go To Top"
-  class="hidden fixed md:hidden z-90 bottom-8 right-8 border-0 w-14 h-14 rounded-full drop-shadow-md bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-black dark:focus:ring-black  text-black text-3xl font-bold"
->
-  <i class='bx bxs-chevrons-up bx-flashing'></i>
-</button>
+
+<app-loader></app-loader>

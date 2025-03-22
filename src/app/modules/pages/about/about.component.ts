@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { fadeInUp, flipIn, scaleIn, bounceIn } from '../../constants/animation';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { fadeInUp, flipIn, scaleIn, bounceIn } from '../../../shared/constants/animation';
 
 @Component({
   selector: 'app-about',
@@ -22,6 +22,7 @@ ngOnInit(): void {
     firstSection?.classList.add('animate-active');
   }, 0);
 }
+
   ngAfterViewInit(): void {
     const observer = new IntersectionObserver(
       (entries) => {

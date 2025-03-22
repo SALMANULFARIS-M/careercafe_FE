@@ -1,39 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { FooterComponent } from './layouts/footer/footer.component';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
-import { LoaderComponent } from "./pages/loader/loader.component";
-import { filter } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { LoaderComponent } from './shared/layouts/loader/loader.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, NavbarComponent, LoaderComponent, CommonModule], // Import Footer and Navbar
+  imports: [RouterOutlet, LoaderComponent, CommonModule], // Import Footer and Navbar
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 
 export class AppComponent implements OnInit {
-  isNotFound: boolean = false;
-  constructor(private router: Router) {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        // Check if the current URL is the 404 page
-        this.isNotFound = event.urlAfterRedirects === '/404';
-      });
-  }
+  constructor(@Inject(PLATFORM_ID) private platformId: object,) { }
   ngOnInit(): void {
-    var toTopButton = document.getElementById("to-top-button") as HTMLElement;
+    if (isPlatformBrowser(this.platformId)) {
 
-    // When the user scrolls down 200px from the top of the document, show the button
-    window.onscroll = function () {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        toTopButton.classList.remove("hidden");
-      } else {
-        toTopButton.classList.add("hidden");
+      var toTopButton = document.getElementById("to-top-button") as HTMLElement;
+
+      // When the user scrolls down 200px from the top of the document, show the button
+      window.onscroll = function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+          toTopButton.classList.remove("hidden");
+        } else {
+          toTopButton.classList.add("hidden");
+        }
       }
     }
   }

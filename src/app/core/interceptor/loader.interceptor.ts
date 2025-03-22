@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { LoaderService } from './services/loader.service';  // Ensure this path is correct
+import { LoaderService } from '../services/loader.service';  // Ensure this path is correct
 import { finalize } from 'rxjs/operators';
 
 export const loaderInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
@@ -14,3 +14,4 @@ export const loaderInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
     })
   );
 };
+

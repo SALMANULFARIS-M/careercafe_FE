@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LoaderService } from '../../services/loader.service';
 import { Observable } from 'rxjs';
+import { LoaderService } from '../../../core/services/loader.service';
 
 @Component({
   selector: 'app-loader',
