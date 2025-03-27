@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import {  FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonService } from '../../../core/services/common.service';
 import { State } from '../../../shared/constants/states';

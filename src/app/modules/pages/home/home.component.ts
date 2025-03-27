@@ -88,6 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   scrollToForm() {
+
     if (isPlatformBrowser(this.platformId) && this.admissionFormSection) {
       this.admissionFormSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
     } else {

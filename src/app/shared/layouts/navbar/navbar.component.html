@@ -1,101 +1,89 @@
-<div class="relative z-50 bg-transparent" [class.scrolled]="isScrolled" id="navbar">
-  <nav
-    class="relative flex justify-between rounded-md items-center bg-navy transition-all duration-300 ease-in-out"
+<!-- Main Navbar Wrapper -->
+<div class="w-full fixed top-0 left-0 z-50 bg-transparent">
+  <div
+    #navbar
+    class=" bg-transparent duration-700 ease-in-out relative "
+    [@navbarAnimation]="isScrolled ? 'scrolled' : 'expanded'"
+    [ngClass]="{
+      'mt-12 rounded-xl shadow-sm bg-transparent': !isScrolled && !isMobile,
+      'mt-0 rounded-none shadow-lg bg-transparent': isScrolled || isMobile
+    }"
   >
-    <a class="font-bold leading-none p-2" routerLink="/">
-      <img
-        src="careercafe_logo-transparent.png"
-        class="w-24 rounded"
-        alt="logo"
-        viewBox="0 0 10240 10240"
-      />
-    </a>
-    <div class="lg:hidden">
-      <!-- Toggle button -->
-      <button
-        (click)="toggleMobileMenu()"
-        class="navbar-burger flex items-center text-white p-3"
+    <nav
+      class="flex justify-between bg-navy items-center px-6 py-2 transition-all duration-700 ease-in-out"
+      [ngClass]="{
+        'mt-4 rounded-xl': !isScrolled,
+        'mt-0 rounded-none': isScrolled
+      }">
+      <!-- Logo -->
+      <a class="font-bold leading-none p-2" routerLink="/">
+        <img
+          src="careercafe_logo-transparent.png"
+          class="w-16 rounded"
+          alt="logo"
+        />
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <div class="lg:hidden">
+        <button
+          (click)="toggleMobileMenu()"
+          class="navbar-burger flex items-center text-white p-3"
+        >
+          <svg
+            class="block h-4 w-4 fill-current"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Mobile menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul
+        class="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6"
       >
-        <svg
-          class="block h-4 w-4 fill-current"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Mobile menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-        </svg>
-      </button>
-    </div>
-    <ul
-      class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6"
-    >
-      <li>
-        <a
-          class="text-base rounded-lg font-semibold text-pretty text-lime-50 hover:text-yellow-200 transition-all duration-300 ease-in-out"
-          routerLink="/"
-          routerLinkActive="active-link animated-underline"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Home
-        </a>
-      </li>
-      <li class="text-yellow-200">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          stroke="currentColor"
-          class="w-4 h-4 current-fill"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-          />
-        </svg>
-      </li>
-      <li>
-        <a
-          class="text-base rounded-lg font-semibold text-pretty text-lime-50 hover:text-yellow-200"
-          routerLink="/about"
-          routerLinkActive="active-link animated-underline"
-          >About Us
-        </a>
-      </li>
-      <li class="text-yellow-200">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          stroke="currentColor"
-          class="w-4 h-4 current-fill"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-          />
-        </svg>
-      </li>
-      <li>
-        <a
-          class="text-base rounded-lg font-semibold text-pretty text-lime-50 hover:text-yellow-200"
-          routerLink="/contact"
-          routerLinkActive="active-link animated-underline"
-          >Contact
-        </a>
-      </li>
-    </ul>
-    <!-- Be a Franchise Button -->
-    <a
-      routerLink="/franchise"
-      routerLinkActive="active-link animated-underline"
-      class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md  hover:border-2"
-    >
-      Become a Franchise
-    </a>
-  </nav>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active-link animated-underline"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="text-yellow-200">|</li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/about"
+            routerLinkActive="active-link animated-underline"
+            >About Us</a
+          >
+        </li>
+        <li class="text-yellow-200">|</li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/contact"
+            routerLinkActive="active-link animated-underline"
+            >Contact</a
+          >
+        </li>
+      </ul>
+
+      <!-- Franchise CTA -->
+      <a
+        routerLink="/franchise"
+        routerLinkActive="active-link animated-underline"
+        class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md hover:border-2"
+      >
+        Become a Franchise
+      </a>
+    </nav>
+  </div>
 </div>
 
 <!-- Mobile Menu -->
@@ -105,18 +93,15 @@
     (click)="toggleMobileMenu()"
   ></div>
   <nav
-    class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto"
+    class="fixed top-0 left-0 bottom-0 w-full py-6 px-6 bg-white border-r overflow-y-auto"
   >
     <div class="flex items-center mb-8">
-      <a class="mr-auto text-3xl font-bold leading-none" href="#">
-        <svg class="h-12" alt="logo" viewBox="0 0 10240 10240">
-          <!-- SVG Path -->
-        </svg>
+      <a class="mr-auto text-3xl font-bold leading-none" routerLink="/">
+        <img src="careercafe_logo-transparent.png" class="h-12" alt="logo" />
       </a>
       <button class="navbar-close" (click)="toggleMobileMenu()">
         <svg
-          class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
-          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 text-gray-400 hover:text-gray-500"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -130,46 +115,128 @@
         </svg>
       </button>
     </div>
-    <div>
-      <ul>
-        <li class="mb-1">
-          <a
-            class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
-            routerLink="/"
-            routerLinkActive="active-link-mobile animated-underline-mobile"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="toggleMobileMenu()"
-            >Home</a
-          >
-        </li>
-        <li class="mb-1">
-          <a
-            class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
-            routerLink="/about"
-            routerLinkActive="active-link-mobile animated-underline-mobile"
-            (click)="toggleMobileMenu()"
-            >About Us</a
-          >
-        </li>
-        <li class="mb-1">
-          <a
-            class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
-            routerLink="/contact"
-            routerLinkActive="active-link-mobile animated-underline-mobile"
-            (click)="toggleMobileMenu()"
-            >Contact</a
-          >
-        </li>
-        <li class="mb-1">
-          <a
-            class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-yellow-200 rounded"
-            routerLink="/franchise"
-            routerLinkActive="active-link-mobile animated-underline-mobile"
-            (click)="toggleMobileMenu()"
-            >Be a Franchise</a
-          >
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li>
+        <a
+          class="mobile-link"
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          routerLinkActive="active-link-mobile"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="mobile-link"
+          routerLink="/about"
+          (click)="toggleMobileMenu()"
+          routerLinkActive="active-link-mobile"
+          >About Us</a
+        >
+      </li>
+      <li>
+        <a
+          class="mobile-link"
+          routerLink="/contact"
+          (click)="toggleMobileMenu()"
+          routerLinkActive="active-link-mobile"
+          >Contact</a
+        >
+      </li>
+      <li>
+        <a
+          class="mobile-link"
+          routerLink="/franchise"
+          (click)="toggleMobileMenu()"
+          routerLinkActive="active-link-mobile"
+          >Be a Franchise</a
+        >
+      </li>
+    </ul>
   </nav>
 </div>
+
+<!-- Main Navbar Wrapper -->
+<!-- <div class="w-full">
+  <div
+    class="z-50 transition-all duration-500 ease-in-out"
+    [ngClass]="{
+      'absolute left-1/2 top-10 w-5/6 -translate-x-1/2 rounded-xl shadow-sm': !isScrolled && !isMobile,
+      'fixed top-0 left-0 w-full rounded-none shadow-lg': isScrolled || isMobile
+    }"
+  >
+    <nav
+      class="flex justify-between bg-navy items-center px-6 py-2 transition-all duration-500 ease-in-out"
+      [ngClass]="{
+        'max-w-[1200px] mx-auto rounded-xl': !isScrolled && !isMobile,
+        'max-w-full w-full rounded-none': isScrolled || isMobile
+      }"
+    >
+      <a class="font-bold leading-none p-2" routerLink="/">
+        <img
+          src="careercafe_logo-transparent.png"
+          class="w-16 rounded"
+          alt="logo"
+        />
+      </a>
+
+      <div class="lg:hidden">
+        <button
+          (click)="toggleMobileMenu()"
+          class="navbar-burger flex items-center text-white p-3"
+        >
+          <svg
+            class="block h-4 w-4 fill-current"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Mobile menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+        <li><a class="nav-link" routerLink="/" routerLinkActive="active-link animated-underline" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+        <li class="text-yellow-200">|</li>
+        <li><a class="nav-link" routerLink="/about" routerLinkActive="active-link animated-underline">About Us</a></li>
+        <li class="text-yellow-200">|</li>
+        <li><a class="nav-link" routerLink="/contact" routerLinkActive="active-link animated-underline">Contact</a></li>
+      </ul>
+
+      <a
+        routerLink="/franchise"
+        routerLinkActive="active-link animated-underline"
+        class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md hover:border-2"
+      >
+        Become a Franchise
+      </a>
+    </nav>
+  </div>
+</div>
+
+<div *ngIf="isMobileMenuOpen" class="navbar-menu relative z-50 lg:hidden">
+  <div
+    class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"
+    (click)="toggleMobileMenu()"
+  ></div>
+  <nav class="fixed top-0 left-0 bottom-0 w-full py-6 px-6 bg-white border-r overflow-y-auto">
+    <div class="flex items-center mb-8">
+      <a class="mr-auto text-3xl font-bold leading-none" routerLink="/">
+        <img src="careercafe_logo-transparent.png" class="h-12" alt="logo">
+      </a>
+      <button class="navbar-close" (click)="toggleMobileMenu()">
+        <svg class="h-6 w-6 text-gray-400 hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <ul>
+      <li><a class="mobile-link" routerLink="/" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">Home</a></li>
+      <li><a class="mobile-link" routerLink="/about" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">About Us</a></li>
+      <li><a class="mobile-link" routerLink="/contact" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">Contact</a></li>
+      <li><a class="mobile-link" routerLink="/franchise" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">Be a Franchise</a></li>
+    </ul>
+  </nav>
+</div> -->

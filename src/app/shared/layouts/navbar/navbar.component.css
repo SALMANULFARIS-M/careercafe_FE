@@ -1,40 +1,16 @@
-
-.bg-lime-50 {
-  position: sticky;
-  top: 0; /* Adjust the offset as needed */
-  z-index: 50; /* Ensure it's above other content */
-  animation: sticky-slide-down 0.4s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+.nav-link {
+  @apply text-base rounded-lg font-semibold text-lime-50 hover:text-yellow-200 transition-all duration-300 ease-in-out;
+}
+.mobile-link {
+  @apply block p-4 text-sm font-semibold text-gray-600 hover:bg-blue-50 hover:text-yellow-200 rounded;
 }
 
-@keyframes sticky-slide-down {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+nav {
+  transition: all 0.5s ease-in-out;
 }
 
-.bg-lime-50:hover {
-  background-color: #15263a; /* Slightly darker lime shade on hover */
-}
 
-#navbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  padding: 1rem;
-  background-color: #F3F4F6; /* Initial background color */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-}
 
-#navbar.scrolled {
-  padding: 0; /* No padding when scrolled */
-  background-color:rgb(21,38,58); /* Slightly darker shade when scrolled */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
 .navbar-menu {
   transition: all 0.3s ease-in-out;
 }
@@ -135,3 +111,4 @@ a:hover::after {
   transform: scaleX(1);
   transition: transform 0.3s ease-in-out;
 }
+
