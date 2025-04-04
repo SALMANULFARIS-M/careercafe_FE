@@ -8,11 +8,12 @@ import { fadeInUp, flipIn, scaleIn, bounceIn } from '../../../shared/constants/a
 import { TimeFormatPipe } from '../../../shared/pipes/time-format.pipe';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { TooltipDirective } from '../../../shared/directives/tooltip.directive';
 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule, TimeFormatPipe, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, TimeFormatPipe, RouterModule,TooltipDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [fadeInUp, flipIn, scaleIn, bounceIn],
@@ -114,15 +115,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     { title: 'Personalized Services', description: 'Tailored advice to meet your needs.' },
     { title: 'Expert Consultants', description: 'Access to experienced professionals.' }
   ];
-  events = [
-    { name: 'Finding Jobs', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHP3X40qSYXqN7C1D3DqJSkRiv3alfvQo1vg&s' },
-    { name: 'PR', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDazSFLf0zKnQeu5rZMLp7bz-lu2v_Y9z3lJFVhjLQ2qtqY0Ik2UpwZXy1XHP6uHQW9rM&usqp=CAU' },
-    { name: 'MBBS Abroad', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs-KDg-uYYlKsxEMkY_cJ7u2AwAh7RwGzaqg&s' },
-    { name: 'MBBS India', image: 'https://mbbsexpert.in/wp-content/uploads/2021/05/India.jpg' },
+  programs = [
+    { name: 'Education', image: 'https://i.ytimg.com/vi/2WRYsRgbkww/maxresdefault.jpg' },
+    { name: 'Abroad Education', image: 'https://i.pinimg.com/736x/46/26/44/462644190b2332e2f3042fa745746f42.jpg' },
+    { name: 'Visa Attestation', image: 'https://acevisaandtravels.com/img/banner-bg.jpg' },
+    { name: 'Jobs', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHP3X40qSYXqN7C1D3DqJSkRiv3alfvQo1vg&s' },
     { name: 'Abroad Jobs', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRI9s3h4bhrorKaaC91NKKSOISZhGxonT38ylby6Jy8lR6bNQe9nRO_wUTJV_74WYX8VY&usqp=CAU' },
-    { name: 'tech Events', image: 'https://storage.googleapis.com/techsauce-prod/ugc/uploads/2024/4/1713844557_1692263684_S__13025327_0_%282%29.jpg' },
-
+    { name: 'PR', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDazSFLf0zKnQeu5rZMLp7bz-lu2v_Y9z3lJFVhjLQ2qtqY0Ik2UpwZXy1XHP6uHQW9rM&usqp=CAU' },
   ];
+
   isValidDate(date: string): boolean {
     const enteredDate = new Date(date);
     const today = new Date();
