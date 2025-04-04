@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import {  Component, OnInit } from '@angular/core';
-import {  FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonService } from '../../../core/services/common.service';
 import { State } from '../../../shared/constants/states';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,9 @@ import { ToastrService } from 'ngx-toastr';
 
 
 export class FranchiseComponent implements OnInit {
-  constructor(private fb: FormBuilder, private service: CommonService,private toastr:ToastrService) {
+  constructor(private fb: FormBuilder, private service: CommonService, private toastr: ToastrService,
+    @Inject(PLATFORM_ID) private platformId: object,
+  ) {
     this.registerForm = this.fb.group({
       name: ["", [Validators.required]],
       mobile: ['', [Validators.required, Validators.pattern(/^\d{7,12}$/)]],
@@ -47,16 +49,18 @@ export class FranchiseComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = false
-    this.startAutoSlide();
-    this.service.getCountries().subscribe((data) => {
-      this.countries = data;
-      const india = this.countries.find(country => country.name === 'IN')
-      // Or whatever property holds the name
-      if (india) {
-        this.selectedDialCode = india.dialCode; // Assuming callingCodes is an array, take the first one. Adjust if needed.
-      }
-    });
-    this.states = this.service.getStates();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoSlide();
+      this.service.getCountries().subscribe((data) => {
+        this.countries = data;
+        const india = this.countries.find(country => country.name === 'IN')
+        // Or whatever property holds the name
+        if (india) {
+          this.selectedDialCode = india.dialCode; // Assuming callingCodes is an array, take the first one. Adjust if needed.
+        }
+      });
+      this.states = this.service.getStates();
+    }
   }
   ngOnDestroy() {
     clearInterval(this.intervalId);

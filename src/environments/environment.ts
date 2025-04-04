@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://careercafe.co/api'  // Use domain in production
+  apiUrl: 'https://careercafe-be.onrender.com'  // Use domain in production
 };
 
