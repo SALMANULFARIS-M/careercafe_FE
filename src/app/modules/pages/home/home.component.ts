@@ -9,11 +9,12 @@ import { TimeFormatPipe } from '../../../shared/pipes/time-format.pipe';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { TooltipDirective } from '../../../shared/directives/tooltip.directive';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule, TimeFormatPipe, RouterModule,TooltipDirective],
+  imports: [CommonModule, ReactiveFormsModule, TimeFormatPipe, RouterModule, TooltipDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [fadeInUp, flipIn, scaleIn, bounceIn],
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   availableTimes: string[] = [];
   currentTime: Date = new Date();
   isLoading = false; // Control the loading spinner visibility
+  isTooltipVisible: boolean = true;
   private dateChangeSubscription!: Subscription;
   allTimes: string[] = [
     '10:00', // 10:00 AM
@@ -36,13 +38,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('admissionFormSection') admissionFormSection!: ElementRef;
 
   constructor(private el: ElementRef, private renderer: Renderer2, private service: CommonService,
-    @Inject(PLATFORM_ID) private platformId: object, private toastr: ToastrService) {
+    @Inject(PLATFORM_ID) private platformId: object, private toastr: ToastrService, private sanitizer: DomSanitizer) {
     this.setAvailableTimes();
   }
 
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+
       setTimeout(() => {
         const firstSection = document.getElementById('first-section');
         firstSection?.classList.add('animate-active');
@@ -105,16 +108,41 @@ export class HomeComponent implements OnInit, AfterViewInit {
     'https://static.vecteezy.com/system/resources/previews/006/974/797/non_2x/coaching-process-concept-paper-sheet-with-ideas-or-plan-cup-of-coffee-and-eyeglasses-on-desk-photo.jpg'
   ];
   services = [
-    { title: 'Education Guidance', description: 'Explore top universities and programs worldwide.' },
-    { title: 'Career Counseling', description: 'Find the right career path and job opportunities' },
-    { title: 'PR and Immigration', description: 'Get expert advice on securing PR in 120 countries.' }
+    {
+      title: 'Education Guidance',
+      description: 'Expert advice on educational pathways tailored to your career goals and aspirations.',
+      icon: 'education',
+    },
+    {
+      title: 'Career Planning',
+      description: 'Strategic career planning and development services to help you achieve your professional goals.',
+      icon: 'career',
+    },
+    {
+      title: 'PR Consultancy',
+      description: 'Comprehensive guidance on permanent residency applications and immigration pathways.',
+      icon: 'pr',
+    },
   ];
 
   benefits = [
-    { title: 'Global Reach', description: 'Partnerships in over 120 countries.' },
-    { title: 'Personalized Services', description: 'Tailored advice to meet your needs.' },
-    { title: 'Expert Consultants', description: 'Access to experienced professionals.' }
+    {
+      title: 'Personalized Approach',
+      description:
+        'Tailored solutions based on your unique background, goals, and circumstances.',
+    },
+    {
+      title: 'Expert Consultants',
+      description:
+        'Experienced professionals with deep knowledge of education systems and immigration policies.',
+    },
+    {
+      title: 'Supportive Environment',
+      description:
+        'A comfortable café atmosphere where you can discuss your future over a cup of coffee.',
+    },
   ];
+
   programs = [
     { name: 'Education', image: 'https://i.ytimg.com/vi/2WRYsRgbkww/maxresdefault.jpg' },
     { name: 'Abroad Education', image: 'https://i.pinimg.com/736x/46/26/44/462644190b2332e2f3042fa745746f42.jpg' },
@@ -180,6 +208,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       return isToday ? timeObj > now : true;
     });
   }
+
+
 
   admissionForm = new FormGroup({
     name: new FormControl('', Validators.required),

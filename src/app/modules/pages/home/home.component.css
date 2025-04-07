@@ -1,3 +1,20 @@
 .button-hover:hover {
   color: #001f3f !important; /* Navy */
 }
+.hover-container {
+  position: relative;
+}
+
+.hover-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+
+.hover-container:hover .hover-icon {
+  opacity: 1;
+}

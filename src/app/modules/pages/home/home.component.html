@@ -1,67 +1,68 @@
-
-  <section class=" py-20 text-center relative  animated-box">
-    <div class="absolute inset-0 bg-black ">
-      <img
-        src="cc1.png"
-        alt="Background Image"
-        class="w-full h-full object-cover opacity-70 filter blur-sm"
-      />
-      <div class="absolute inset-0 bg-black opacity-40"></div>
-    </div>
-    <div
-      class="container relative mx-auto px-4 my-24 animated-box"
-      id="first-section"
-      @fadeInUp
-    >
-      <h2 class="text-4xl font-extrabold text-white mb-6">
-        <span>Your One-Stop Solution for</span><br />
-        <span class="md:text-yellow-400">
-          Career, Immigration Advice and Education</span
-        >
-      </h2>
-      <br />
-      <p class="text-xl mb-6 text-lime-50 font-semibold leading-relaxed">
-        Discover endless opportunities across 120 countries with expert
-        guidance.
-      </p>
-      <div class="mt-8">
-        <br /><br />
-        <button
-          (click)="scrollToForm()"
-          class="button-hover py-3 px-8 text-white rounded-full font-bold text-lg bg-navy shadow-md transition duration-300 hover:bg-yellow-400 hover:text-navy hover:font-extrabold"
-        >
-          Book an Appointment
-        </button>
-      </div>
-    </div>
-  </section>
-  <section
-    class="relative bg-gray-100 py-16 text-center block md:hidden bg-[url('https://www.transparenttextures.com/patterns/old-moon.png')] bg-repeat"
+<section class="py-20 text-center relative animated-box">
+  <div class="absolute inset-0 bg-black">
+    <img
+      src="cc1.png"
+      alt="Background Image"
+      class="w-full h-full object-cover opacity-70 filter blur-sm"
+    />
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </div>
+  <div
+    class="container relative mx-auto px-4 my-28 animated-box"
+    id="first-section"
+    @fadeInUp
   >
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center">
-        <a
-          [routerLink]="'/franchise'"
-          class="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 text-navy font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:from-yellow-300 hover:to-yellow-400 animate-[bounce_1.5s_infinite]"
-        >
-          Become a Franchise
-        </a>
-      </div>
-      <!-- <p class="mt-4 text-gray-700 text-lg animate-pulse">
+    <h2 class="text-4xl merriweather-bold text-white mb-6">
+      <span>Your One-Stop Solution for</span><br />
+      <span class="md:text-yellow-400">
+        Career, Immigration Advice and Education</span
+      >
+    </h2>
+    <br />
+    <p
+      class="text-xl mb-6 text-lime-50 font-semibold leading-relaxed open-sans"
+    >
+      Discover endless opportunities across 120 countries with expert guidance.
+    </p>
+    <div class="mt-8">
+      <br /><br />
+      <button
+        (click)="scrollToForm()"
+        class="poppins-medium button-hover py-3 px-8 text-white rounded-full bg-navy shadow-md transition duration-300 hover:bg-yellow-400 hover:text-navy hover:font-extrabold"
+      >
+        Book an Appointment
+      </button>
+    </div>
+  </div>
+</section>
+
+<section
+  class="relative bg-gray-100 py-16 text-center block md:hidden bg-[url('https://www.transparenttextures.com/patterns/old-moon.png')] bg-repeat"
+>
+  <div class="container mx-auto px-4">
+    <div class="flex justify-center">
+      <a
+        [routerLink]="'/franchise'"
+        class="poppins-medium bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 text-navy py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:from-yellow-300 hover:to-yellow-400 animate-[bounce_1.5s_infinite]"
+      >
+        Become a Franchise
+      </a>
+    </div>
+    <!-- <p class="mt-4 text-gray-700 text-lg animate-pulse">
         🚀 Start your journey with us today!
       </p> -->
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="bg-gray-100 py-20 text-center">
+<!-- <section class="bg-gray-100 py-20 text-center">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-extrabold text-navy mb-6">
+      <h2 class="text-4xl  text-navy mb-6 montserrat-bold">
         Welcome to
         <span class="text-yellow-400 animated-box" [@scaleIn]
           >Career Café!</span
         >
       </h2>
-      <p class="text-lg text-gray-700 mb-8 animated-box" [@scaleIn]>
+      <p class="text-lg text-gray-700 mb-28 animated-box poppins-light " [@scaleIn]>
         Career Café is a unique platform designed to help individuals explore
         and achieve their dreams in education, careers, jobs, and permanent
         residency (PR). We combine the relaxed atmosphere of a café with expert
@@ -69,7 +70,7 @@
         comfortable environment.
       </p>
 
-      <h3 class="text-3xl font-bold text-navy mb-4">What We Offer</h3>
+      <h3 class="text-3xl font-bold text-navy mb-4 montserrat-normal">What We Offer</h3>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box"
         [@flipIn]
@@ -78,14 +79,14 @@
           *ngFor="let service of services"
           class="service-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
         >
-          <h4 class="text-xl font-semibold text-yellow-400 mb-2">
+          <h4 class="text-xl font-semibold text-yellow-400 mb-2 pt-serif-bold">
             {{ service.title }}
           </h4>
-          <p class="text-gray-600">{{ service.description }}</p>
+          <p class="text-gray-600 merriweather-regular">{{ service.description }}</p>
         </div>
       </div>
 
-      <h3 class="text-3xl font-bold text-navy mt-12 mb-6">Why Choose Us?</h3>
+      <h3 class="text-3xl font-bold text-navy mt-12 mb-6 montserrat-normal">Why Choose Us?</h3>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box"
         [@flipIn]
@@ -94,375 +95,648 @@
           *ngFor="let benefit of benefits"
           class="animate-fade-in animate-slide-up benefit-box bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
         >
-          <h4 class="text-xl font-semibold text-yellow-400 mb-2">
+          <h4 class="text-xl montserrat-normal font-semibold text-yellow-400 mb-2">
             {{ benefit.title }}
           </h4>
-          <p class="text-gray-600">{{ benefit.description }}</p>
+          <p class="text-gray-600 merriweather-regular">{{ benefit.description }}</p>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- Detail Section -->
-  <section id="about" class="py-20 bg-white">
+<section
+  class="bg-gradient-to-b from-gray-100 to-gray-50 py-24 text-center relative overflow-hidden"
+>
+  <!-- Background Design Elements -->
+  <div
+    class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 z-0"
+  >
     <div
-      class="container mx-auto px-6 flex flex-col lg:flex-row items-center animated-box"
-      [@bounceIn]
+      class="absolute top-10 left-10 w-32 h-32 rounded-full bg-yellow-500"
+    ></div>
+    <div
+      class="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-blue-500"
+    ></div>
+    <div
+      class="absolute top-1/3 left-1/3 w-24 h-24 rounded-full bg-green-500"
+    ></div>
+    <div
+      class="absolute bottom-1/3 right-1/3 w-16 h-16 rounded-full bg-purple-500"
+    ></div>
+  </div>
+
+  <!-- Coffee Cup Decorative Element -->
+  <div class="absolute top-10 right-10 opacity-20 hidden lg:block">
+    <svg
+      width="120"
+      height="120"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- Image Container -->
-      <div class="lg:w-1/2 grid grid-cols-2 gap-4">
-        <div
-          *ngFor="let img of images"
-          class="relative w-full h-full animate-fade-in animate-slide-up"
-        >
-          <img
-            [src]="img"
-            alt="Career Guidance"
-            class="img-style rounded-xl shadow-lg w-full h-full object-cover"
-          />
-          <div class="absolute inset-0 bg-navy opacity-30 rounded-xl"></div>
-        </div>
-      </div>
+      <path
+        d="M18 8h1a4 4 0 0 1 0 8h-1"
+        stroke="#8B4513"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+      <path
+        d="M4 4h16v12a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V4z"
+        fill="#EAB308"
+        stroke="#8B4513"
+        stroke-width="2"
+      />
+      <path
+        d="M6 2h12"
+        stroke="#8B4513"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
 
-      <!-- Text Content -->
-      <div class="lg:w-1/2 mt-10 lg:mt-0 text-center lg:text-left">
-        <!-- Main Heading -->
-        <h3
-          class="text-[100px] font-normal text-[#19293b] leading-none font-[Brush Script MT] animated-box"
-          [@scaleIn]
-        >
-          Find Your Career Path
-        </h3>
-        <!-- Subheading -->
-        <h4
-          class="text-[47px] font-bold text-[#ffc20e] tracking-[9.4px] font-[Copperplate] mt-4 animated-box"
-          [@scaleIn]
-        >
-          Your Career Compass, Fueled by Coffee
-        </h4>
-        <div class="my-4"><i class="fas fa-asterisk text-yellow-400"></i></div>
-        <!-- Paragraph -->
-        <p class="text-lg text-gray-700 animated-box" [@scaleIn]>
-          Enjoy a warm cup of Cofee while exploring a career roadmap tailored
-          just for you. Get expert guidance, insights, and motivation to achieve
-          your professional goals in a relaxed and inspiring environment.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="bg-gray-100 py-20 text-center">
-    <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Hero Section -->
+    <div class="mb-16">
       <h2
-        class="text-4xl font-extrabold text-navy mb-12 animated-box"
-        [@scaleIn]
+        class="text-4xl montserrat-bold text-navy mb-6 tracking-tight relative inline-block"
       >
-        How It Works
-      </h2>
-
-      <!-- Step 1 - Image Layout -->
-      <div
-        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
-      >
-        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
-          <div class="flex items-center justify-center mb-4">
-            <div class="text-4xl text-yellow-400 font-bold">01</div>
-          </div>
-          <h3 class="text-2xl font-semibold text-navy mb-2">
-            Book an Appointment
-          </h3>
-          <p class="text-lg text-gray-600">
-            Schedule a session with our expert consultants through our website
-            or at one of our café locations.
-          </p>
-        </div>
-        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
-          <img
-            src="https://www.shutterstock.com/image-photo/book-your-appointment-text-on-600nw-2400843205.jpg"
-            alt="Book Appointment"
-            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
-          />
-        </div>
-      </div>
-
-      <!-- Step 2 - Icon Layout -->
-      <div
-        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
-      >
-        <div class="sm:w-1/2 md:order-2 mr-5 animated-box" [@scaleIn]>
-          <div class="flex items-center justify-center mb-4">
-            <div class="text-4xl text-yellow-400 font-bold">02</div>
-          </div>
-          <h3 class="text-2xl font-semibold text-navy mb-2">
-            Discuss Your Goals
-          </h3>
-          <p class="text-lg text-gray-600">
-            Sit down with our experts to discuss your education, career, or
-            immigration aspirations.
-          </p>
-        </div>
-        <div class="sm:w-1/2 md:order-1 mb-6 sm:mb-0 animated-box" [@bounceIn]>
-          <img
-            src="https://st2.depositphotos.com/1006009/10540/i/450/depositphotos_105405522-stock-photo-set-goals-that-matter-on.jpg"
-            alt="Book Appointment"
-            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
-          />
-        </div>
-      </div>
-
-      <!-- Step 3 - Image & Icon Mix -->
-      <div
-        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
-      >
-        <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
-          <div class="flex items-center justify-center mb-4">
-            <div class="text-4xl text-yellow-400 font-bold">03</div>
-          </div>
-          <h3 class="text-2xl font-semibold text-navy mb-2">
-            Explore Opportunities
-          </h3>
-          <p class="text-lg text-gray-600">
-            Receive a personalized plan with options suited to your needs.
-          </p>
-        </div>
-        <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
-          <img
-            src="https://st2.depositphotos.com/1092019/8662/i/450/depositphotos_86628780-stock-photo-handwritten-explore-your-options-on.jpg"
-            alt="Book Appointment"
-            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
-          />
-        </div>
-      </div>
-
-      <!-- Step 4 - Image & Icon Mix -->
-      <div
-        class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
-      >
-        <div class="sm:w-1/2 md:order-2 mr-5 animated-box" [@scaleIn]>
-          <div class="flex items-center justify-center mb-4">
-            <div class="text-4xl text-yellow-400 font-bold">04</div>
-          </div>
-          <h3 class="text-2xl font-semibold text-navy mb-2">Take Action</h3>
-          <p class="text-lg text-gray-600">
-            With our guidance, embark on your journey to success.
-          </p>
-        </div>
-        <div class="sm:w-1/2 md:order-1 mb-6 sm:mb-0 animated-box" [@bounceIn]>
-          <img
-            src="https://st3.depositphotos.com/1006009/18531/i/450/depositphotos_185310142-stock-photo-take-action-motivation-concept-on.jpg"
-            alt="Book Appointment"
-            class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
-          />
-        </div>
-      </div>
-
-      <!-- Network Opportunities - Emphasis Section -->
-      <div
-        class="mt-12 bg-yellow-400 text-navy p-8 rounded-lg shadow-lg animated-box"
-        [@scaleIn]
-      >
-        <h3 class="text-2xl font-bold mb-4">Join a Network of Opportunities</h3>
-        <p class="text-lg">
-          Our collaborative network of consultancies ensures that you have
-          access to the best resources, institutions, and job markets worldwide.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs Section -->
-  <section id="events" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-bold mb-6 text-center text-navy">PROGRAMS FOR</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-        <a
-          *ngFor="let event of programs"
-          [href]="'https://docs.google.com/forms/d/e/1FAIpQLSc8TXjqypzzmqKkw690nUC6-1uLaXDuLYiqV2b-w8sYsZdkjw/viewform?usp=dialog'"
-          target="_blank"
-          class="relative bg-cover bg-center h-40 rounded shadow-md flex items-center justify-center text-white text-xl font-bold animated-box flip-in-box transition-transform transform hover:scale-105"
-          [@flipIn]
-          [style.backgroundImage]="'url(' + event.image + ')'"
-          appTooltip="Click to Register"
+        Welcome to
+        <span
+          class="text-yellow-500 relative animated-box merriweather-regular"
+          [@scaleIn]
         >
-          <div class="bg-black/60 bg-opacity-80 absolute inset-0 rounded"></div>
-          <span class="relative">{{ event.name }}</span>
-        </a>
+          Career Café!
+          <span
+            class="absolute -bottom-2 left-0 w-full h-1 bg-yellow-400 transform -skew-x-12"
+          ></span>
+        </span>
+      </h2>
+      <p
+        class="text-lg poppins-light text-gray-700 mb-8 max-w-5xl mx-auto leading-relaxed animated-box poppins-light"
+        [@scaleIn]
+      >
+        Career Café is a unique platform designed to help individuals explore
+        and achieve their dreams in education, careers, jobs, and permanent
+        residency (PR). We combine the relaxed atmosphere of a café with expert
+        consultancy services, enabling you to make informed decisions in a
+        comfortable environment.
+      </p>
+
+      <div class="inline-block text-center relative hover-container">
+        <button
+          class="bg-yellow-500 hover:bg-yellow-600 pt-serif-bold text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
+          Explore Services
+        </button>
+        <div class="hover-icon">
+          <i class="bx bx-down-arrow-circle text-5xl text-yellow-600"></i>
+        </div>
       </div>
     </div>
-  </section>
 
+    <!-- What We Offer Section -->
+    <div class="mb-20">
+      <h3
+        class="text-3xl font-bold text-navy mb-12 relative inline-block montserrat-normal"
+      >
+        What We Offer
+        <span
+          class="absolute -bottom-1 left-1/4 right-1/4 h-[2px] bg-yellow-400"
+        ></span>
+      </h3>
 
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box mx-4"
+        [@flipIn]
+      >
+        <!-- Service Box 1 -->
+        <div
+          *ngFor="let service of services"
+          class="bg-white p-8 rounded-xl shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl border-t-4 border-yellow-400 group"
+        >
+          <div
+            class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-yellow-200 transition-all duration-300"
+          >
+            <div class="w-14 h-8">
+              <ng-container [ngSwitch]="service.icon">
+                <svg
+                  *ngSwitchCase="'education'"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-full h-full"
+                >
+                  <path
+                    d="M22 9L12 5L2 9L12 13L22 9ZM22 9V15"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6 11.5V16.5C6 16.5 8.5 19 12 19C15.5 19 18 16.5 18 16.5V11.5"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
 
+                <svg
+                  *ngSwitchCase="'career'"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-full h-full"
+                  fill="none"
+                >
+                  <path
+                    d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
 
-  <!-- BOOKING -->
-  <section #admissionFormSection id="admission-form" class="py-10 bg-gray-100">
-    <div class="container mx-auto px-6 max-w-7xl">
-      <div class="bg-navy p-8 rounded-lg shadow-lg">
-        <h3 class="text-3xl font-bold text-center text-white mb-6">
+                <svg
+                  *ngSwitchCase="'pr'"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="w-full h-full"
+                >
+                  <path
+                    d="M6 2H16C17.1046 2 18 2.89543 18 4V20C18 21.1046 17.1046 22 16 22H6C4.89543 22 4 21.1046 4 20V4C4 2.89543 4.89543 2 6 2Z"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 6H14"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 10H12"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 14H14"
+                    stroke="#EAB308"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </ng-container>
+            </div>
+          </div>
+          <h4 class="text-2xl font-semibold text-yellow-500 mb-2 pt-serif-bold">
+            {{ service.title }}
+          </h4>
+          <p class="text-gray-600 montserrat-normal">
+            {{ service.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="">
+      <h3
+        class="text-3xl font-bold text-navy mb-12 relative inline-block montserrat-normal"
+      >
+        Why Choose Us?
+        <span
+          class="absolute -bottom-1 left-1/4 right-1/4 h-[2px] bg-yellow-400"
+        ></span>
+      </h3>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animated-box flip-in-box mx-12"
+        [@flipIn]
+      >
+        <div
+          *ngFor="let benefit of benefits"
+          class="bg-white p-5 rounded-xl border-[1px] border-yellow-400 shadow-md transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-yellow-300 rounded-bl-full opacity-30"
+          ></div>
+          <h4
+            class="text-2xl font-semibold text-yellow-500 mb-3 relative z-10 merriweather-regular"
+          >
+            {{ benefit.title }}
+          </h4>
+          <p class="text-gray-600 relative z-10 montserrat-normal">
+            {{ benefit.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail Section -->
+<section id="about" class="py-20 bg-white">
+  <div
+    class="container mx-auto px-6 flex flex-col lg:flex-row items-center animated-box"
+    [@bounceIn]
+  >
+    <!-- Image Container -->
+    <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+      <div
+        *ngFor="let img of images"
+        class="relative w-full h-full animate-fade-in animate-slide-up"
+      >
+        <img
+          [src]="img"
+          alt="Career Guidance"
+          class="img-style rounded-xl shadow-lg w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-navy opacity-30 rounded-xl"></div>
+      </div>
+    </div>
+
+    <!-- Text Content -->
+    <div class="lg:w-1/2 mt-10 lg:mt-0 text-center lg:text-left px-2">
+      <!-- Main Heading -->
+      <h3
+        class="text-[100px] font-normal merriweather-regular leading-snug text-[#19293b] animated-box"
+        [@scaleIn]
+      >
+        Find Your Career Path
+      </h3>
+      <!-- Subheading -->
+      <h4
+        class="text-[47px] font-bold text-[#ffc20e] tracking-[9.4px] font-[Copperplate] mt-4 animated-box"
+        [@scaleIn]
+      >
+        Your Career Compass, Fueled by Coffee
+      </h4>
+      <div class="my-4"><i class="fas fa-asterisk text-yellow-400"></i></div>
+      <!-- Paragraph -->
+      <p class="text-lg text-gray-700 animated-box poppins-medium" [@scaleIn]>
+        Enjoy a warm cup of Cofee while exploring a career roadmap tailored just
+        for you. Get expert guidance, insights, and motivation to achieve your
+        professional goals in a relaxed and inspiring environment.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="bg-gray-100 py-20 text-center">
+  <div class="container mx-auto px-4">
+    <h2
+      class="text-4xl font-extrabold text-navy mb-12 animated-box pt-serif-regular"
+      [@scaleIn]
+    >
+      How It Works
+    </h2>
+
+    <!-- Step 1 - Image Layout -->
+    <div
+      class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+    >
+      <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+        <div class="flex items-center justify-center mb-4">
+          <div class="text-4xl text-yellow-400 font-bold">01</div>
+        </div>
+        <h3 class="text-2xl font-semibold text-navy mb-2 montserrat-base">
           Book an Appointment
         </h3>
-        <form
-          (ngSubmit)="onSubmit()"
-          [formGroup]="admissionForm"
-          class="grid grid-cols-1 lg:grid-cols-2 gap-8 animated-box"
-          [@fadeInUp]
-        >
-          <!-- Left Column -->
-          <div>
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Full Name</label
-              >
-              <input
-                type="text"
-                formControlName="name"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-                required
-              />
-              <span
-                *ngIf="
-                  admissionForm.controls['name'].invalid &&
-                  admissionForm.controls['name'].touched
-                "
-                class="text-red-500"
-              >
-                Name is required.
-              </span>
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2">Phone</label>
-              <input
-                type="tel"
-                formControlName="phone"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-                required
-                pattern="^[0-9]{10}$"
-              />
-              <span
-                *ngIf="
-                  admissionForm.controls['phone'].invalid &&
-                  admissionForm.controls['phone'].touched
-                "
-                class="text-red-500"
-              >
-                Please enter a valid 10-digit phone number.
-              </span>
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2">Email</label>
-              <input
-                type="email"
-                formControlName="email"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-                required
-              />
-              <span
-                *ngIf="
-                  admissionForm.controls['email'].invalid &&
-                  admissionForm.controls['email'].touched
-                "
-                class="text-red-500"
-              >
-                Please enter a valid email address.
-              </span>
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2"
-                >Select Place</label
-              >
-              <select
-                name="place"
-                formControlName="place"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
-              >
-                <option value="palakkad">Palakkad</option>
-                <option value="online">Online</option>
-                <option value="bengaluru">Bengaluru</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Right Column -->
-          <div>
-            <!-- Category -->
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2">Select Category</label>
-              <select formControlName="category" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400">
-                <option value="" disabled>Select Category</option>
-                <option value="domestic-admission">Domestic Admission</option>
-                <option value="abroad-admission">Abroad Admission</option>
-                <option value="abroad-job">Abroad Job</option>
-                <option value="domestic-job">Domestic Job</option>
-                <option value="pr">PR</option>
-              </select>
-            </div>
-
-            <!-- Date -->
-            <div class="mb-4">
-              <label class="block text-white font-semibold mb-2">Select Date</label>
-              <input
-                type="date"
-                formControlName="date"
-                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
-                [min]="getMinDate()"
-                (change)="setAvailableTimes()"
-              />
-              <span *ngIf="admissionForm.get('date')?.errors?.['pastDate'] && admissionForm.get('date')?.touched" class="text-red-500">
-                Past dates are not allowed.
-              </span>
-              <span *ngIf="admissionForm.get('date')?.errors?.['sundayNotAllowed'] && admissionForm.get('date')?.touched" class="text-red-500">
-                Sunday is not selectable.
-              </span>
-            </div>
-
-            <!-- Time -->
-            <div class="mb-6">
-              <label class="block text-white font-semibold mb-2">Select Time</label>
-              <select
-                formControlName="time"
-                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
-                required
-              >
-                <option value="" disabled>Select a time</option>
-                <option *ngFor="let time of availableTimes" [value]="time">
-                  {{ time | timeFormat }} <!-- Assuming a custom pipe for AM/PM -->
-                </option>
-              </select>
-              <span *ngIf="admissionForm.get('time')?.errors?.['invalidTime'] && admissionForm.get('time')?.touched" class="text-red-500">
-                Time must be between 10:00 AM and 5:00 PM.
-              </span>
-            </div>
-          </div>
-
-
-          <!-- Submit Button (Outside the Grid Columns) -->
-          <div class="col-span-1 lg:col-span-2">
-            <button
-              type="submit"
-              class="w-full py-3 bg-yellow-400 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-300 hover:text-navy transition disabled:opacity-50 disabled:bg-yellow-600"
-              [disabled]="!admissionForm.valid || isLoading"
-            >
-              <!-- Spinner while submitting -->
-              <span
-                *ngIf="isLoading"
-                class="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
-
-              <!-- Button Text -->
-              <span *ngIf="!isLoading && !admissionForm.valid"
-                >Please complete the form</span
-              >
-              <span *ngIf="!isLoading && admissionForm.valid">Submit</span>
-            </button>
-          </div>
-        </form>
+        <p class="text-lg text-gray-600 poppins-light">
+          Schedule a session with our expert consultants through our website or
+          at one of our café locations.
+        </p>
+      </div>
+      <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+        <img
+          src="https://www.shutterstock.com/image-photo/book-your-appointment-text-on-600nw-2400843205.jpg"
+          alt="Book Appointment"
+          class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+        />
       </div>
     </div>
-  </section>
 
+    <!-- Step 2 - Icon Layout -->
+    <div
+      class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+    >
+      <div class="sm:w-1/2 md:order-2 mr-5 animated-box" [@scaleIn]>
+        <div class="flex items-center justify-center mb-4">
+          <div class="text-4xl text-yellow-400 font-bold">02</div>
+        </div>
+        <h3 class="text-2xl font-semibold text-navy mb-2 montserrat-base">
+          Discuss Your Goals
+        </h3>
+        <p class="text-lg text-gray-600 poppins-light">
+          Sit down with our experts to discuss your education, career, or
+          immigration aspirations.
+        </p>
+      </div>
+      <div class="sm:w-1/2 md:order-1 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+        <img
+          src="https://st2.depositphotos.com/1006009/10540/i/450/depositphotos_105405522-stock-photo-set-goals-that-matter-on.jpg"
+          alt="Book Appointment"
+          class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+        />
+      </div>
+    </div>
+
+    <!-- Step 3 - Image & Icon Mix -->
+    <div
+      class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+    >
+      <div class="sm:w-1/2 mr-5 animated-box" [@scaleIn]>
+        <div class="flex items-center justify-center mb-4">
+          <div class="text-4xl text-yellow-400 font-bold">03</div>
+        </div>
+        <h3 class="text-2xl font-semibold text-navy mb-2 montserrat-base">
+          Explore Opportunities
+        </h3>
+        <p class="text-lg text-gray-600 poppins-light">
+          Receive a personalized plan with options suited to your needs.
+        </p>
+      </div>
+      <div class="sm:w-1/2 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+        <img
+          src="https://st2.depositphotos.com/1092019/8662/i/450/depositphotos_86628780-stock-photo-handwritten-explore-your-options-on.jpg"
+          alt="Book Appointment"
+          class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+        />
+      </div>
+    </div>
+
+    <!-- Step 4 - Image & Icon Mix -->
+    <div
+      class="flex flex-col sm:flex-row justify-between items-center mb-16 max-w-4xl mx-auto"
+    >
+      <div class="sm:w-1/2 md:order-2 mr-5 animated-box" [@scaleIn]>
+        <div class="flex items-center justify-center mb-4">
+          <div class="text-4xl text-yellow-400 font-bold">04</div>
+        </div>
+        <h3 class="text-2xl font-semibold text-navy mb-2 montserrat-base">
+          Take Action
+        </h3>
+        <p class="text-lg text-gray-600 poppins-light">
+          With our guidance, embark on your journey to success.
+        </p>
+      </div>
+      <div class="sm:w-1/2 md:order-1 mb-6 sm:mb-0 animated-box" [@bounceIn]>
+        <img
+          src="https://st3.depositphotos.com/1006009/18531/i/450/depositphotos_185310142-stock-photo-take-action-motivation-concept-on.jpg"
+          alt="Book Appointment"
+          class="w-full h-72 object-cover rounded-lg shadow-lg grayscale-0 transition duration-300 ease-in-out hover:grayscale"
+        />
+      </div>
+    </div>
+
+    <!-- Network Opportunities - Emphasis Section -->
+    <div
+      class="mt-12 bg-yellow-400 text-navy p-8 rounded-lg shadow-lg animated-box"
+      [@scaleIn]
+    >
+      <h3 class="text-2xl font-bold mb-4 montserrat-normal">
+        Join a Network of Opportunities
+      </h3>
+      <p class="text-lg merriweather-bold">
+        Our collaborative network of consultancies ensures that you have access
+        to the best resources, institutions, and job markets worldwide.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Programs Section -->
+<section id="events" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <h3 class="text-3xl font-bold mb-6 text-center text-navy pt-serif-regular">
+      PROGRAMS FOR
+    </h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <a
+        *ngFor="let event of programs"
+        [href]="
+          'https://docs.google.com/forms/d/e/1FAIpQLSc8TXjqypzzmqKkw690nUC6-1uLaXDuLYiqV2b-w8sYsZdkjw/viewform?usp=dialog'
+        "
+        target="_blank"
+        class="relative bg-cover bg-center h-40 rounded shadow-md flex items-center justify-center text-white text-xl font-bold animated-box flip-in-box transition-transform transform hover:scale-105"
+        [@flipIn]
+        [style.backgroundImage]="'url(' + event.image + ')'"
+        appTooltip="Click to Register"
+      >
+        <div class="bg-black/60 bg-opacity-80 absolute inset-0 rounded"></div>
+        <span
+          class="relative text-sm md:text-xl text-center px-2 poppins-bold"
+          >{{ event.name }}</span
+        >
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section #admissionFormSection id="admission-form" class="py-10 bg-gray-100">
+  <div class="container mx-auto px-6 max-w-7xl">
+    <div class="bg-navy p-8 rounded-lg shadow-lg">
+      <h3
+        class="text-3xl font-bold text-center text-white mb-6 playfair-regular"
+      >
+        Book an Appointment
+      </h3>
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="admissionForm"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 animated-box montserrat-normal"
+        [@fadeInUp]
+      >
+        <!-- Left Column -->
+        <div>
+          <div class="mb-4">
+            <label class="block text-white font-semibold mb-2">Full Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              required
+            />
+            <span
+              *ngIf="
+                admissionForm.controls['name'].invalid &&
+                admissionForm.controls['name'].touched
+              "
+              class="text-red-500"
+            >
+              Name is required.
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-white font-semibold mb-2">Phone</label>
+            <input
+              type="tel"
+              formControlName="phone"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              required
+              pattern="^[0-9]{10}$"
+            />
+            <span
+              *ngIf="
+                admissionForm.controls['phone'].invalid &&
+                admissionForm.controls['phone'].touched
+              "
+              class="text-red-500"
+            >
+              Please enter a valid 10-digit phone number.
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-white font-semibold mb-2">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+              required
+            />
+            <span
+              *ngIf="
+                admissionForm.controls['email'].invalid &&
+                admissionForm.controls['email'].touched
+              "
+              class="text-red-500"
+            >
+              Please enter a valid email address.
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-white font-semibold mb-2"
+              >Select Place</label
+            >
+            <select
+              name="place"
+              formControlName="place"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400"
+            >
+              <option value="" disabled>Select Place</option>
+              <option value="online">Online</option>
+              <option value="palakkad" disabled>Palakkad</option>
+              <option value="bengaluru" disabled>Bengaluru</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+          <!-- Category -->
+          <div class="mb-4">
+            <label class="block text-white font-semibold mb-2"
+              >Select Category</label
+            >
+            <select
+              formControlName="category"
+              class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
+            >
+              <option value="" disabled>Select Category</option>
+              <option value="domestic-admission">Domestic Admission</option>
+              <option value="abroad-admission">Abroad Admission</option>
+              <option value="abroad-job">Abroad Job</option>
+              <option value="domestic-job">Domestic Job</option>
+              <option value="pr">PR</option>
+            </select>
+          </div>
+
+          <!-- Date -->
+          <div class="mb-4">
+            <label class="block text-white font-semibold mb-2"
+              >Select Date</label
+            >
+            <input
+              type="date"
+              formControlName="date"
+              class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
+              [min]="getMinDate()"
+              (change)="setAvailableTimes()"
+            />
+            <span
+              *ngIf="admissionForm.get('date')?.errors?.['pastDate'] && admissionForm.get('date')?.touched"
+              class="text-red-500"
+            >
+              Past dates are not allowed.
+            </span>
+            <span
+              *ngIf="admissionForm.get('date')?.errors?.['sundayNotAllowed'] && admissionForm.get('date')?.touched"
+              class="text-red-500"
+            >
+              Sunday is not selectable.
+            </span>
+          </div>
+
+          <!-- Time -->
+          <div class="mb-6">
+            <label class="block text-white font-semibold mb-2"
+              >Select Time</label
+            >
+            <select
+              formControlName="time"
+              class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400"
+              required
+            >
+              <option value="" disabled>Select a time</option>
+              <option *ngFor="let time of availableTimes" [value]="time">
+                {{ time | timeFormat }}
+                <!-- Assuming a custom pipe for AM/PM -->
+              </option>
+            </select>
+            <span
+              *ngIf="admissionForm.get('time')?.errors?.['invalidTime'] && admissionForm.get('time')?.touched"
+              class="text-red-500"
+            >
+              Time must be between 10:00 AM and 5:00 PM.
+            </span>
+          </div>
+        </div>
+
+        <!-- Submit Button (Outside the Grid Columns) -->
+        <div class="col-span-1 lg:col-span-2">
+          <button
+            type="submit"
+            class="pt-serif-bold w-full py-3 bg-yellow-400 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-300 hover:text-navy transition disabled:opacity-50 disabled:bg-yellow-600"
+            [disabled]="!admissionForm.valid || isLoading"
+          >
+            <!-- Spinner while submitting -->
+            <span
+              *ngIf="isLoading"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+
+            <!-- Button Text -->
+            <span *ngIf="!isLoading && !admissionForm.valid"
+              >Please complete the form</span
+            >
+            <span *ngIf="!isLoading && admissionForm.valid">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
