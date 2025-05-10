@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { LoaderComponent } from './shared/layouts/loader/loader.component';
+
+declare let gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,15 @@ import { LoaderComponent } from './shared/layouts/loader/loader.component';
 
 
 export class AppComponent implements OnInit {
-  constructor(@Inject(PLATFORM_ID) private platformId: object,) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', 'G-QK149F8PZV', {
+          'page_path': event.urlAfterRedirects
+        });
+      }
+    });
+  }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
 
