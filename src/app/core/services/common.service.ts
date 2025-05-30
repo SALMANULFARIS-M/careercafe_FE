@@ -3,7 +3,7 @@ import { State, STATES } from '../../shared/constants/states'; // Import states 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { catchError, Observable, of } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 const backendUrl = environment.apiUrl;
 const COUNTRIES_KEY = makeStateKey<Country[]>('countries');
 interface Country {
