@@ -31,7 +31,7 @@ export class FranchiseComponent implements OnInit {
   states: State[] = [];
   districts: string[] = [];
   selectedState = '';
-  countries: { name: string; dialCode: string }[] = [];
+  countries: { name: string; code: string; dialCode: string }[] = [];
   selectedDialCode: string = '';
   isLoading = false; // Control the loading spinner visibili
 
@@ -52,12 +52,14 @@ export class FranchiseComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.startAutoSlide();
       this.service.getCountries().subscribe((data) => {
-        this.countries = data;
-console.log('Countries:', this.countries);
-        const india = this.countries.find(country => country.name === 'IN')
-        // Or whatever property holds the name
+        this.countries = data.map(country => ({
+          name: country.name,
+          code: country.code ?? '',
+          dialCode: country.dialCode
+        }));
+        const india = this.countries.find(country => country.name === "India")
         if (india) {
-          this.selectedDialCode = india.dialCode; // Assuming callingCodes is an array, take the first one. Adjust if needed.
+          this.selectedDialCode = india.dialCode;
         }
       });
       this.states = this.service.getStates();

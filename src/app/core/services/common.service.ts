@@ -2,13 +2,14 @@ import { Inject, Injectable, makeStateKey, PLATFORM_ID, TransferState } from '@a
 import { State, STATES } from '../../shared/constants/states'; // Import states data
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 const backendUrl = environment.apiUrl;
 const COUNTRIES_KEY = makeStateKey<Country[]>('countries');
 interface Country {
-  name: string;
-  dialCode: string;
+  name: string;      // Common name (e.g., "Togo")
+  code?: string;     // Optional: ISO 2-letter code (e.g., "TG")
+  dialCode: string;  // Full dial code (e.g., "+228")
 }
 
 @Injectable({
@@ -17,7 +18,7 @@ interface Country {
 
 export class CommonService {
   private statesAndDistricts: State[] = STATES; // Use imported data
-  private apiUrl = 'https://restcountries.com/v3.1/all'; // API URL
+  private apiUrl = 'https://restcountries.com/v3.1/all?fields=name,idd'; // API URL
 
 
   constructor(private http: HttpClient,
@@ -28,17 +29,21 @@ export class CommonService {
   getCountries(): Observable<Country[]> {
     if (this.transferState.hasKey(COUNTRIES_KEY)) {
       return of(this.transferState.get(COUNTRIES_KEY, []));
-    } else {
-      return this.http.get<any[]>(this.apiUrl).pipe(
-        map(data =>
-          data.map(country => ({
-            name: country.cca2,
-            dialCode: country.idd?.root + (country.idd?.suffixes?.[0] || '')
-          })).filter(c => c.dialCode) // Remove countries without a dial code
-        ),
-        catchError(() => of([])) // Return empty array on error
-      );
     }
+
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map(data =>
+        data
+          .map(country => ({
+            name: country.name.common,
+          code: country.name.common.slice(0, 2).toUpperCase(),
+            dialCode: country.idd?.root + (country.idd?.suffixes?.[0] || '')
+          }))
+          .filter(c => c.dialCode && c.dialCode !== '+')
+      ),
+      tap(countries => this.transferState.set(COUNTRIES_KEY, countries)), // Cache for SSR
+      catchError(() => of([]))
+    );
   }
 
   // Get all states
