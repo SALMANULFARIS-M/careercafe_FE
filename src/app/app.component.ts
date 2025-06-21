@@ -16,14 +16,18 @@ declare let gtag: Function;
 
 export class AppComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: object, private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        gtag('config', 'G-QK149F8PZV', {
-          'page_path': event.urlAfterRedirects
-        });
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          gtag('config', 'G-QK149F8PZV', {
+            'page_path': event.urlAfterRedirects
+          });
+        }
+      })
+    };
   }
+
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
 

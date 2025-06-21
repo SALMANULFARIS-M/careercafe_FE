@@ -53,6 +53,7 @@ export class FranchiseComponent implements OnInit {
       this.startAutoSlide();
       this.service.getCountries().subscribe((data) => {
         this.countries = data;
+console.log('Countries:', this.countries);
         const india = this.countries.find(country => country.name === 'IN')
         // Or whatever property holds the name
         if (india) {
