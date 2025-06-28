@@ -2,7 +2,7 @@
 <div class="w-full fixed top-0 left-0 z-50 bg-transparent">
   <div
     #navbar
-    class=" bg-transparent duration-700 ease-in-out relative "
+    class="bg-transparent duration-700 ease-in-out relative"
     [@navbarAnimation]="isScrolled ? 'scrolled' : 'expanded'"
     [ngClass]="{
       'mt-12 rounded-xl shadow-sm bg-transparent': !isScrolled && !isMobile,
@@ -14,9 +14,10 @@
       [ngClass]="{
         'mt-4 rounded-xl': !isScrolled,
         'mt-0 rounded-none': isScrolled
-      }">
+      }"
+    >
       <!-- Logo -->
-      <a class="font-bold leading-none p-2 " routerLink="/">
+      <a class="font-bold leading-none p-2" routerLink="/">
         <img
           src="careercafe_logo-transparent.png"
           class="w-16 rounded"
@@ -65,6 +66,69 @@
         </li>
         <li class="text-yellow-200">|</li>
         <li>
+          <!-- Community Button with Dropdown -->
+          <div
+            class="relative inline-block text-left"
+            (click)="toggleDropdown()"
+            (keydown.enter)="toggleDropdown()"
+          >
+            <button
+              type="button"
+              class="nav-link montserrat-normal whatsapp-menu-trigger text-white rounded-md bg-transparent"
+              [attr.aria-expanded]="open"
+              aria-haspopup="true"
+            >
+              Community
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              *ngIf="open"
+              class="absolute left-1/2 z-50 mt-4 w-56 -translate-x-1/2 rounded-lg bg-navy shadow-lg origin-top transform transition-all duration-200 ease-out scale-95 opacity-0"
+              [class.scale-100]="open"
+              [class.opacity-100]="open"
+              [class.visible]="open"
+            >
+              <a
+                href="https://whatsapp.com/channel/0029VbAR6X4F6smvafCCms2K "
+                target="_blank"
+                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 rounded-t-lg focus:outline focus:outline-yellow-400"
+              >
+                ✈️ Abroad Jobs CC
+              </a>
+              <!-- <a
+                href="https://chat.whatsapp.com/community2"
+                target="_blank"
+                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 focus:outline focus:outline-yellow-400"
+              >
+                💻 Developers
+              </a>
+              <a
+                href="https://chat.whatsapp.com/community3"
+                target="_blank"
+                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 focus:outline focus:outline-yellow-400"
+              >
+                🎓 Students Hub
+              </a>
+              <a
+                href="https://chat.whatsapp.com/community4"
+                target="_blank"
+                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 focus:outline focus:outline-yellow-400"
+              >
+                🤖 AI & Tech Talks
+              </a>
+              <a
+                href="https://chat.whatsapp.com/community5"
+                target="_blank"
+                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 rounded-b-lg focus:outline focus:outline-yellow-400"
+              >
+                📢 Events & Announcements
+              </a> -->
+            </div>
+          </div>
+        </li>
+        <li class="text-yellow-200">|</li>
+        <li>
           <a
             class="nav-link montserrat-normal"
             routerLink="/contact"
@@ -78,7 +142,7 @@
       <a
         routerLink="/franchise"
         routerLinkActive="active-link animated-underline"
-        class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md hover:border-2  montserrat-normal"
+        class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md hover:border-2 montserrat-normal"
       >
         Become a Franchise
       </a>
@@ -86,22 +150,32 @@
   </div>
 </div>
 
-<!-- Mobile Menu -->
-<div *ngIf="isMobileMenuOpen" class="navbar-menu relative z-50 lg:hidden">
+<!-- Mobile Menu Overlay -->
+<div *ngIf="isMobileMenuOpen" class="fixed inset-0 z-50 lg:hidden">
+  <!-- Backdrop -->
   <div
-    class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"
+    class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
     (click)="toggleMobileMenu()"
   ></div>
+
+  <!-- Slide-in Menu -->
   <nav
-    class="fixed top-0 left-0 bottom-0 w-full py-6 px-6 bg-navy border-r overflow-y-auto"
+    class="absolute top-0 left-0 h-full w-4/5 max-w-xs bg-navy text-white px-6 py-6 shadow-xl transform transition-transform duration-300 ease-in-out"
+    [class.translate-x-0]="isMobileMenuOpen"
+    [class.-translate-x-full]="!isMobileMenuOpen"
   >
-    <div class="flex items-center mb-8">
-      <a class="mr-auto text-3xl font-bold leading-none" routerLink="/">
-        <img src="careercafe_logo-transparent.png" class="h-12" alt="logo" />
+    <!-- Logo & Close -->
+    <div class="flex items-center justify-between mb-8">
+      <a
+        routerLink="/"
+        class="text-3xl font-bold leading-none"
+        (click)="toggleMobileMenu()"
+      >
+        <img src="careercafe_logo-transparent.png" class="h-10" alt="logo" />
       </a>
-      <button class="navbar-close" (click)="toggleMobileMenu()">
+      <button (click)="toggleMobileMenu()" aria-label="Close menu">
         <svg
-          class="h-6 w-6 text-gray-200 hover:text-gray-500"
+          class="h-6 w-6 text-gray-300 hover:text-white transition"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -115,128 +189,117 @@
         </svg>
       </button>
     </div>
-    <ul>
+
+    <!-- Menu Items -->
+    <ul class="space-y-4">
       <li>
         <a
-          class="mobile-link montserrat-normal"
           routerLink="/"
           [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-yellow-400"
+          class="block montserrat-normal text-lg hover:text-yellow-400 transition"
           (click)="toggleMobileMenu()"
-          routerLinkActive="active-link-mobile"
           >Home</a
         >
       </li>
       <li>
         <a
-          class="mobile-link montserrat-normal"
           routerLink="/about"
+          routerLinkActive="text-yellow-400"
+          class="block montserrat-normal text-lg hover:text-yellow-400 transition"
           (click)="toggleMobileMenu()"
-          routerLinkActive="active-link-mobile"
           >About Us</a
         >
       </li>
+
+      <!-- Community Toggle -->
+      <li>
+        <button
+          type="button"
+          (click)="toggleDropdown()"
+          class="w-full text-left community-toggle montserrat-normal text-lg hover:text-yellow-400 transition flex items-center justify-between"
+        >
+          Community
+          <svg
+            [ngClass]="{ 'rotate-180': open }"
+            class="h-5 w-5 transform transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <ul
+          *ngIf="open"
+          class="pl-4 mt-2 space-y-2 text-sm transition-opacity duration-300 ease-in-out opacity-100"
+        >
+          <li>
+            <a
+              href="https://chat.whatsapp.com/community1"
+              target="_blank"
+              class="block text-white hover:text-yellow-400 transition"
+              > ✈️ Abroad Jobs CC</a
+            >
+          </li>
+          <!-- <li>
+            <a
+              href="https://chat.whatsapp.com/community2"
+              target="_blank"
+              class="block text-white hover:text-yellow-400 transition"
+              >💻 Developers</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://chat.whatsapp.com/community3"
+              target="_blank"
+              class="block text-white hover:text-yellow-400 transition"
+              >🎓 Students Hub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://chat.whatsapp.com/community4"
+              target="_blank"
+              class="block text-white hover:text-yellow-400 transition"
+              >🤖 AI & Tech Talks</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://chat.whatsapp.com/community5"
+              target="_blank"
+              class="block text-white hover:text-yellow-400 transition"
+              >📢 Events & Announcements</a
+            >
+          </li> -->
+        </ul>
+      </li>
+
       <li>
         <a
-          class="mobile-link montserrat-normal"
           routerLink="/contact"
+          routerLinkActive="text-yellow-400"
+          class="block montserrat-normal text-lg hover:text-yellow-400 transition"
           (click)="toggleMobileMenu()"
-          routerLinkActive="active-link-mobile"
           >Contact</a
         >
       </li>
       <li>
         <a
-          class="mobile-link montserrat-normal"
           routerLink="/franchise"
+          routerLinkActive="text-yellow-400"
+          class="block montserrat-normal text-lg hover:text-yellow-400 transition"
           (click)="toggleMobileMenu()"
-          routerLinkActive="active-link-mobile"
-          >Be a Franchise</a
+          >Become a Franchise</a
         >
       </li>
     </ul>
   </nav>
 </div>
-
-<!-- Main Navbar Wrapper -->
-<!-- <div class="w-full">
-  <div
-    class="z-50 transition-all duration-500 ease-in-out"
-    [ngClass]="{
-      'absolute left-1/2 top-10 w-5/6 -translate-x-1/2 rounded-xl shadow-sm': !isScrolled && !isMobile,
-      'fixed top-0 left-0 w-full rounded-none shadow-lg': isScrolled || isMobile
-    }"
-  >
-    <nav
-      class="flex justify-between bg-navy items-center px-6 py-2 transition-all duration-500 ease-in-out"
-      [ngClass]="{
-        'max-w-[1200px] mx-auto rounded-xl': !isScrolled && !isMobile,
-        'max-w-full w-full rounded-none': isScrolled || isMobile
-      }"
-    >
-      <a class="font-bold leading-none p-2" routerLink="/">
-        <img
-          src="careercafe_logo-transparent.png"
-          class="w-16 rounded"
-          alt="logo"
-        />
-      </a>
-
-      <div class="lg:hidden">
-        <button
-          (click)="toggleMobileMenu()"
-          class="navbar-burger flex items-center text-white p-3"
-        >
-          <svg
-            class="block h-4 w-4 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Mobile menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-          </svg>
-        </button>
-      </div>
-
-      <ul class="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
-        <li><a class="nav-link" routerLink="/" routerLinkActive="active-link animated-underline" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-        <li class="text-yellow-200">|</li>
-        <li><a class="nav-link" routerLink="/about" routerLinkActive="active-link animated-underline">About Us</a></li>
-        <li class="text-yellow-200">|</li>
-        <li><a class="nav-link" routerLink="/contact" routerLinkActive="active-link animated-underline">Contact</a></li>
-      </ul>
-
-      <a
-        routerLink="/franchise"
-        routerLinkActive="active-link animated-underline"
-        class="hidden lg:flex text-white font-semibold text-base px-4 py-2 mr-3 rounded-lg shadow-md hover:border-2"
-      >
-        Become a Franchise
-      </a>
-    </nav>
-  </div>
-</div>
-
-<div *ngIf="isMobileMenuOpen" class="navbar-menu relative z-50 lg:hidden">
-  <div
-    class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"
-    (click)="toggleMobileMenu()"
-  ></div>
-  <nav class="fixed top-0 left-0 bottom-0 w-full py-6 px-6 bg-white border-r overflow-y-auto">
-    <div class="flex items-center mb-8">
-      <a class="mr-auto text-3xl font-bold leading-none" routerLink="/">
-        <img src="careercafe_logo-transparent.png" class="h-12" alt="logo">
-      </a>
-      <button class="navbar-close" (click)="toggleMobileMenu()">
-        <svg class="h-6 w-6 text-gray-400 hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-    <ul>
-      <li><a class="mobile-link" routerLink="/" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">Home</a></li>
-      <li><a class="mobile-link" routerLink="/about" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">About Us</a></li>
-      <li><a class="mobile-link" routerLink="/contact" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">Contact</a></li>
-      <li><a class="mobile-link" routerLink="/franchise" (click)="toggleMobileMenu()" routerLinkActive="active-link-mobile">Be a Franchise</a></li>
-    </ul>
-  </nav>
-</div> -->

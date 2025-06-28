@@ -35,6 +35,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class NavbarComponent {
   isScrolled = false;
+  open = false;
   @ViewChild('navbar') navbar!: ElementRef;
   isMenuOpen = false;
   isMobileMenuOpen: boolean = false;
@@ -63,6 +64,35 @@ export class NavbarComponent {
   }
 
   checkIsMobile() {
-    this.isMobile = window.innerWidth < 768; // Tailwind's lg breakpoint
+    this.isMobile = window.innerWidth < 768;
+    this.open = false; // Close
+  }
+
+  toggleDropdown(): void {
+
+    setTimeout(() => {
+      this.open = !this.open;
+    }, 10);
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: MouseEvent): void {
+    if (this.isMobile) return; // 🔥 Skip on mobile
+
+    const target = event.target as HTMLElement;
+    if (
+      target.closest('.whatsapp-menu') ||
+      target.closest('.whatsapp-menu-trigger') ||
+      target.closest('.community-toggle') // 👈 Add this check
+    ) {
+      return;
+    }
+
+    this.open = false;
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  handleEscapeKey(event: KeyboardEvent): void {
+    this.open = false;
   }
 }
