@@ -6,13 +6,14 @@ import {
   Input,
   Renderer2,
   PLATFORM_ID,
+  OnDestroy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appTooltip]',
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
   @Input('appTooltip') tooltipText!: string;
   tooltipElement!: HTMLElement;
   isBrowser: boolean;
@@ -27,7 +28,7 @@ export class TooltipDirective {
 
   @HostListener('mouseenter', ['$event'])
   onMouseEnter(event: MouseEvent) {
-    if (!this.isBrowser || !this.tooltipText) return;
+    if (!this.isBrowser || !this.tooltipText || this.tooltipElement) return;
 
     // ❌ Disable on small screens
     if (window.innerWidth < 768) return;
@@ -76,12 +77,24 @@ export class TooltipDirective {
     if (this.isBrowser && this.tooltipElement) {
       this.renderer.setStyle(this.tooltipElement, 'opacity', '0');
       this.renderer.setStyle(this.tooltipElement, 'transform', 'translateY(0px)');
-      setTimeout(() => {
-        if (this.tooltipElement) {
-          document.body.removeChild(this.tooltipElement);
-          this.tooltipElement = null!;
-        }
-      }, 300);
+
+      // Use requestAnimationFrame to avoid timing issues
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (this.tooltipElement && this.tooltipElement.parentElement) {
+            this.tooltipElement.remove(); // use native remove
+            this.tooltipElement = null!;
+          }
+        }, 300); // match the transition delay
+      });
     }
   }
+  ngOnDestroy(): void {
+    if (this.tooltipElement && this.tooltipElement.parentElement) {
+      this.tooltipElement.remove();
+      this.tooltipElement = null!;
+    }
+  }
+
+
 }
