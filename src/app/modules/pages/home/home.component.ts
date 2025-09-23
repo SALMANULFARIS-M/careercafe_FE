@@ -1,15 +1,13 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
-
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CommonService } from '../../../core/services/common.service';
 import { fadeInUp, flipIn, scaleIn, bounceIn } from '../../../shared/constants/animation';
 import { TimeFormatPipe } from '../../../shared/pipes/time-format.pipe';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { TooltipDirective } from '../../../shared/directives/tooltip.directive';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Component({
@@ -38,7 +36,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('admissionFormSection') admissionFormSection!: ElementRef;
 
   constructor(private el: ElementRef, private renderer: Renderer2, private service: CommonService,
-    @Inject(PLATFORM_ID) private platformId: object, private toastr: ToastrService, private sanitizer: DomSanitizer) {
+    @Inject(PLATFORM_ID) private platformId: object, private toastr: ToastrService, private router: Router) {
     this.setAvailableTimes();
   }
 
@@ -251,5 +249,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
+toEligibility() {
+ this.router.navigate(['/eligibility-checker']);
+}
+
 
 }

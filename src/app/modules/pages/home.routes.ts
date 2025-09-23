@@ -6,6 +6,7 @@ import { HomeComponent } from "./home/home.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
 import { TermsComponent } from "./terms/terms.component";
 import { PagesComponent } from "./pages.component";
+import { EligibilityCheckerComponent } from "../../shared/layouts/eligibility-checker/eligibility-checker.component";
 
 export const HOME_ROUTES: Routes = [
   {
@@ -17,6 +18,8 @@ export const HOME_ROUTES: Routes = [
       { path: 'franchise', component: FranchiseComponent },
       { path: 'privacy', component: PrivacyComponent },
       { path: 'terms', component: TermsComponent },
+      { path: 'eligibility-checker', component: EligibilityCheckerComponent },
+
     ]
   }
 ];

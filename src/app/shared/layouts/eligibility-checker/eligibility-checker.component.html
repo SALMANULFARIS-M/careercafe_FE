@@ -1,0 +1,79 @@
+<div class="max-w-xl mx-auto p-6 border border-navy bg-white/80 backdrop-blur-md shadow-2xl rounded-2xl my-24 md:my-32">
+  <!-- Progress Bar -->
+  <div class="w-full bg-gray-200 rounded-full h-2 mb-6 overflow-hidden">
+    <div
+      class="bg-navy h-2 rounded-full transition-all duration-700 ease-out"
+      [style.width.%]="(step / (questions.length + 1)) * 100"
+    ></div>
+  </div>
+
+  <!-- Questions -->
+  <div *ngIf="step < questions.length" class="animate-fadeIn">
+    <h2 class="text-lg sm:text-xl font-bold mb-4 text-navy">
+      {{ questions[step].q.text }}
+    </h2>
+
+    <div class="grid gap-3">
+      <button
+        *ngFor="let opt of questions[step].q.options"
+        (click)="answers[questions[step].key] = opt; nextStep()"
+        [ngClass]="{
+          'bg-navy/10 border-navy text-navy font-semibold': answers[questions[step].key]?.label === opt.label
+        }"
+        class="p-4 rounded-xl border border-gray-300 hover:shadow-lg hover:scale-[1.02] transition-all text-left"
+      >
+        {{ opt.label }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Backlogs Input -->
+  <div *ngIf="step === questions.length" class="animate-fadeIn">
+    <h2 class="text-lg sm:text-xl font-bold mb-4 text-navy">
+      Number of academic backlogs?
+    </h2>
+    <input
+      type="number"
+      min="0"
+      [value]="answers['backlogs']"
+      (input)="answers['backlogs'] = ($any($event.target)?.valueAsNumber ?? 0)"
+      class="border border-gray-300 rounded-lg p-2 w-28"
+    />
+
+    <div class="mt-6 flex justify-between">
+      <button (click)="prevStep()" class="px-4 py-2 rounded-lg border hover:bg-gray-100 transition">
+        ⬅ Back
+      </button>
+      <button
+        (click)="calculateEligibility()"
+        class="px-6 py-2 bg-navy text-white rounded-lg hover:bg-navy/90 transition"
+      >
+        See Result
+      </button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div *ngIf="step === questions.length + 1 && result" class="text-center animate-fadeIn">
+    <div
+      class="mx-auto w-32 h-32 rounded-full border-8 flex items-center justify-center text-3xl font-bold animate-pulse"
+      [ngClass]="{
+        'border-green-500 text-green-600': result.score >= 80,
+        'border-blue-500 text-blue-600': result.score >= 60 && result.score < 80,
+        'border-yellow-500 text-yellow-600': result.score >= 40 && result.score < 60,
+        'border-red-500 text-red-600': result.score < 40
+      }"
+    >
+      {{ result.score }}
+    </div>
+    <h2 class="mt-4 text-xl font-bold">Your Score: {{ result.score }}/100</h2>
+    <p class="mt-2 text-gray-700">{{ result.interpretation }}</p>
+
+    <button
+      (click)="resetForm()"
+      class="mt-6 px-6 py-2 bg-yellow-400 text-navy font-semibold rounded-lg hover:bg-yellow-500 transition"
+    >
+      🔄 Re-check Eligibility
+    </button>
+  </div>
+</div>

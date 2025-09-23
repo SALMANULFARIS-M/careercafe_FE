@@ -7,34 +7,48 @@
     />
     <div class="absolute inset-0 bg-black opacity-40"></div>
   </div>
+
   <div
     class="container relative mx-auto px-4 my-28 animated-box"
     id="first-section"
     @fadeInUp
   >
+    <!-- Heading -->
     <h2 class="text-4xl merriweather-bold text-white mb-6">
       <span>Your One-Stop Solution for</span><br />
       <span class="md:text-yellow-400">
-        Career, Immigration Advice and Education</span
-      >
+        Career, Immigration Advice and Education
+      </span>
     </h2>
-    <br />
+
+    <!-- Subtext -->
     <p
       class="text-xl mb-6 text-lime-50 font-semibold leading-relaxed open-sans"
     >
       Discover endless opportunities across 120 countries with expert guidance.
     </p>
-    <div class="mt-8">
-      <br /><br />
+
+    <!-- CTA Buttons -->
+    <div
+      class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
+    >
       <button
         (click)="scrollToForm()"
         class="poppins-medium button-hover py-3 px-8 text-white rounded-full bg-navy shadow-md transition duration-300 hover:bg-yellow-400 hover:text-navy hover:font-extrabold"
       >
         Book an Appointment
       </button>
+
+      <button
+        (click)="toEligibility()"
+        class="poppins-medium button-hover py-3 px-8 text-white rounded-full bg-yellow-400 shadow-md transition duration-300 hover:bg-yellow-600 hover:text-white hover:font-extrabold"
+      >
+        Check Eligibility
+      </button>
     </div>
   </div>
 </section>
+
 
 <section
   class="relative bg-gray-100 py-16 text-center block md:hidden bg-[url('https://www.transparenttextures.com/patterns/old-moon.png')] bg-repeat"
