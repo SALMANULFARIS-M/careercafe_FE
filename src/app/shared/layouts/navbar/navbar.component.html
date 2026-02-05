@@ -66,66 +66,12 @@
         </li>
         <li class="text-yellow-200">|</li>
         <li>
-          <!-- Community Button with Dropdown -->
-          <div
-            class="relative inline-block text-left"
-            (click)="toggleDropdown()"
-            (keydown.enter)="toggleDropdown()"
+          <a
+            class="nav-link montserrat-normal"
+            routerLink="/jobs"
+            routerLinkActive="active-link animated-underline"
+            >Jobs</a
           >
-            <button
-              type="button"
-              class="nav-link montserrat-normal whatsapp-menu-trigger text-white rounded-md bg-transparent"
-              [attr.aria-expanded]="open"
-              aria-haspopup="true"
-            >
-              Community
-            </button>
-
-            <!-- Dropdown Menu -->
-            <div
-              *ngIf="open"
-              class="absolute left-1/2 z-50 mt-4 w-56 -translate-x-1/2 rounded-lg bg-navy shadow-lg origin-top transform transition-all duration-200 ease-out scale-95 opacity-0"
-              [class.scale-100]="open"
-              [class.opacity-100]="open"
-              [class.visible]="open"
-            >
-              <a
-                href="https://whatsapp.com/channel/0029VbAR6X4F6smvafCCms2K "
-                target="_blank"
-                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 rounded-t-lg focus:outline focus:outline-yellow-400"
-              >
-                ✈️ Abroad Jobs CC
-              </a>
-              <!-- <a
-                href="https://chat.whatsapp.com/community2"
-                target="_blank"
-                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 focus:outline focus:outline-yellow-400"
-              >
-                💻 Developers
-              </a>
-              <a
-                href="https://chat.whatsapp.com/community3"
-                target="_blank"
-                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 focus:outline focus:outline-yellow-400"
-              >
-                🎓 Students Hub
-              </a>
-              <a
-                href="https://chat.whatsapp.com/community4"
-                target="_blank"
-                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 focus:outline focus:outline-yellow-400"
-              >
-                🤖 AI & Tech Talks
-              </a>
-              <a
-                href="https://chat.whatsapp.com/community5"
-                target="_blank"
-                class="block px-4 py-3 text-white text-sm hover:bg-indigo-900 hover:-translate-x-1 transition-all duration-200 rounded-b-lg focus:outline focus:outline-yellow-400"
-              >
-                📢 Events & Announcements
-              </a> -->
-            </div>
-          </div>
         </li>
         <li class="text-yellow-200">|</li>
         <li>
@@ -212,74 +158,14 @@
         >
       </li>
 
-      <!-- Community Toggle -->
       <li>
-        <button
-          type="button"
-          (click)="toggleDropdown()"
-          class="w-full text-left community-toggle montserrat-normal text-lg hover:text-yellow-400 transition flex items-center justify-between"
+        <a
+          routerLink="/jobs"
+          routerLinkActive="text-yellow-400"
+          class="block montserrat-normal text-lg hover:text-yellow-400 transition"
+          (click)="toggleMobileMenu()"
+          >Jobs</a
         >
-          Community
-          <svg
-            [ngClass]="{ 'rotate-180': open }"
-            class="h-5 w-5 transform transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-        <ul
-          *ngIf="open"
-          class="pl-4 mt-2 space-y-2 text-sm transition-opacity duration-300 ease-in-out opacity-100"
-        >
-          <li>
-            <a
-              href="https://chat.whatsapp.com/community1"
-              target="_blank"
-              class="block text-white hover:text-yellow-400 transition"
-              > ✈️ Abroad Jobs CC</a
-            >
-          </li>
-          <!-- <li>
-            <a
-              href="https://chat.whatsapp.com/community2"
-              target="_blank"
-              class="block text-white hover:text-yellow-400 transition"
-              >💻 Developers</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://chat.whatsapp.com/community3"
-              target="_blank"
-              class="block text-white hover:text-yellow-400 transition"
-              >🎓 Students Hub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://chat.whatsapp.com/community4"
-              target="_blank"
-              class="block text-white hover:text-yellow-400 transition"
-              >🤖 AI & Tech Talks</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://chat.whatsapp.com/community5"
-              target="_blank"
-              class="block text-white hover:text-yellow-400 transition"
-              >📢 Events & Announcements</a
-            >
-          </li> -->
-        </ul>
       </li>
 
       <li>
